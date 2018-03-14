@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Landing.css';
+
+import ToDoItem from './ToDoItem';
+
 
 const Landing = () => (
   <div className="App">
@@ -11,6 +14,7 @@ const Landing = () => (
     <p className="App-intro">
       To get started, edit <code>src/App.js</code> and save to reload.
     </p>
+    <ToDoItem />
   </div>
 );
 

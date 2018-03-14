@@ -3,6 +3,8 @@ import React from 'react';
 
 
 
-const toDoItem = props => (
-
+const ToDoItem = () => (
+	<h1> TO DO ITEM EXAMPLE </h1>
 );
+
+export default ToDoItem;
