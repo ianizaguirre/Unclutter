@@ -4,7 +4,6 @@ import './Landing.css';
 
 import ToDoItem from './ToDoItem';
 
-
 const Landing = () => (
   <div className="App">
     <header className="App-header">
@@ -17,6 +16,5 @@ const Landing = () => (
     <ToDoItem />
   </div>
 );
-
 
 export default Landing;
