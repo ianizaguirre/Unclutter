@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 
 class ToDoItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      userTask: 'some random user task'
+  state = {
+      userTask: ''
     };
-    this.handleUserTaskInput = this.handleUserTaskInput.bind(this);
-  }
 
-  handleUserTaskInput (event) {
+  handleUserTaskInput = event => {
   	this.setState({ userTask: event.target.value });
   }
 
