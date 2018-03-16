@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 class ToDoItem extends Component {
   state = {
@@ -11,20 +11,27 @@ class ToDoItem extends Component {
 
   render() {
     return (
-      <div className="wrapper">
-
+      <Fragment>
 
         <h1> TO DO ITEM EXAMPLE </h1>
 
-        <input
-         onChange={this.handleUserTaskInput}
-     	   value={this.state.userTask} 
-       	 type="text"
-       	 placeholder="Enter a Task"
-        />
+
+				<form>
+
+	        <input
+	         onChange={this.handleUserTaskInput}
+	     	   value={this.state.userTask} 
+	       	 type="text"
+	       	 placeholder="Enter a Task"
+	       	 required
+	        />
+
+	        <button type="submit"> Add Task → </button>
+
+        </form>
 
 
-      </div>
+      </Fragment>
     );
   }
 }
