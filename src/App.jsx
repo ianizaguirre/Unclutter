@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 class StorePicker extends Component {
 	myInput = React.createRef();
@@ -7,17 +7,18 @@ class StorePicker extends Component {
 		event.preventDefault();
 		const storeName = this.myInput.value.value;
 		console.log(storeName);
-		this.props.history.push(`/store/${storeName}`);
 	};
 	render() {
 		return (
-			<form className="store-selector" onSubmit={this.goToStore}>
-				<h2> Please Enter A Store </h2>
+			<Fragment>
+				<form className="store-selector" onSubmit={this.goToStore}>
+					<h2> Please Enter A Store </h2>
 
-				<input required type="text" ref={this.myInput} placeholder="Store Name" />
+					<input required type="text" ref={this.myInput} placeholder="Store Name" />
 
-				<button type="submit"> Visit Store → </button>
-			</form>
+					<button type="submit"> Visit Store → </button>
+				</form>
+			</Fragment>
 		);
 	}
 }
