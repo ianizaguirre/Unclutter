@@ -4,7 +4,6 @@ import './Landing.css';
 
 import ToDoItem from './ToDoItem';
 import ToDoList from './ToDoList';
-import StorePicker from './App';
 
 const Landing = () => (
   <div className="App">
@@ -17,7 +16,6 @@ const Landing = () => (
     </p>
     <ToDoList />
     <ToDoItem />
-    <StorePicker />
   </div>
 );
 

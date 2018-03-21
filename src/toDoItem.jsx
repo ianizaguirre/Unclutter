@@ -9,6 +9,14 @@ class ToDoItem extends Component {
     this.setState({ userTask: event.target.value });
   };
 
+  myInput = React.createRef();
+
+  addToDoEntry = event => {
+    event.preventDefault();
+    const entryContents = this.myInput.value.value;
+    console.log(entryContents);
+  };
+
   render() {
     return (
       <Fragment>
@@ -19,6 +27,7 @@ class ToDoItem extends Component {
             onChange={this.handleUserTaskInput}
             value={this.state.userTask}
             type="text"
+            ref={this.myInput}
             placeholder="Enter a Task"
             required
           />
