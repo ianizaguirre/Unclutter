@@ -1,22 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+
 import './Landing.css';
 
-import ToDoItem from './ToDoItem';
-import ToDoList from './ToDoList';
+import Header from './Header';
 
-const Landing = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
-    </header>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
-    <ToDoList />
-    <ToDoItem />
-  </div>
-);
+class Landing extends Component {
+  goToMainApp = event => {
+    event.preventDefault();
+    this.props.history.push(`/app/`);
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <Header />
+
+        <div className="Center-this">
+          <form onSubmit={this.goToMainApp}>
+            <h2>This is The Landing Page, Would You Like To Enter The Application?</h2>
+            <button type="submit"> Visit Application → </button>
+          </form>
+        </div>
+      </Fragment>
+    );
+  }
+}
 
 export default Landing;

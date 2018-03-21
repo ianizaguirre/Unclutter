@@ -20,7 +20,7 @@ class ToDoItem extends Component {
   render() {
     return (
       <Fragment>
-        <h1> TO DO ITEM EXAMPLE </h1>
+        <h3> To Do Item Component - EXAMPLE </h3>
 
         <form onSubmit={this.addToDoEntry}>
           <input
