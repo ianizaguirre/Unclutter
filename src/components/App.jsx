@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import './App.css';
+import '../css/App.css';
 
 import Header from './Header';
-import ToDoItem from './ToDoItem';
+import AddTaskForm from './AddTaskForm';
 import ToDoList from './ToDoList';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
 				<div className="Center-this">
 					<h1>This is the Start of the App Component</h1>
 					<ToDoList />
-					<ToDoItem />
+					<AddTaskForm />
 				</div>
 			</Fragment>
 		);

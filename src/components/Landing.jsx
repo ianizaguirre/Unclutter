@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import './Landing.css';
-
+import '../css/Landing.css';
 import Header from './Header';
 
 class Landing extends Component {

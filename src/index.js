@@ -1,8 +1,8 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
-import './index.css';
-import Router from './Router';
+import './css/index.css';
+import Router from './components/Router';
 import registerServiceWorker from './registerServiceWorker';
 
 const renderApp = () => {

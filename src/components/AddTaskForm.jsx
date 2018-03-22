@@ -1,14 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-class ToDoItem extends Component {
-  state = {
-    userTask: ''
-  };
-
-  handleUserTaskInput = event => {
-    this.setState({ userTask: event.target.value });
-  };
-
+class AddTaskForm extends Component {
   myInput = React.createRef();
 
   addToDoEntry = event => {
@@ -23,14 +15,7 @@ class ToDoItem extends Component {
         <h3> To Do Item Component - EXAMPLE </h3>
 
         <form onSubmit={this.addToDoEntry}>
-          <input
-            onChange={this.handleUserTaskInput}
-            value={this.state.userTask}
-            type="text"
-            ref={this.myInput}
-            placeholder="Enter a Task"
-            required
-          />
+          <input type="text" ref={this.myInput} placeholder="Enter a Task" required />
 
           <button type="submit"> Add Task → </button>
         </form>
@@ -39,4 +24,4 @@ class ToDoItem extends Component {
   }
 }
 
-export default ToDoItem;
+export default AddTaskForm;

@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './Header.css';
+import logo from '../logo.svg';
+import '../css/Header.css';
 
 const Header = () => (
 	<div className="Center-this">
