@@ -7,6 +7,14 @@ import TodayView from './TodayView';
 import ToDoList from './ToDoList';
 
 class App extends Component {
+	state = {
+		tasks: {}
+	};
+
+	handleAddTask = someTask => {
+		console.log(someTask);
+	};
+
 	render() {
 		return (
 			<Fragment>
@@ -15,7 +23,7 @@ class App extends Component {
 				<div className="Center-this">
 					<h1>This is the Start of the App Component</h1>
 					<ToDoList />
-					<TodayView />
+					<TodayView addTask={this.handleAddTask} />
 				</div>
 			</Fragment>
 		);

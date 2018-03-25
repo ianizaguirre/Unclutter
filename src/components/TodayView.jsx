@@ -7,7 +7,7 @@ class TodayView extends Component {
 		return (
 			<Fragment>
 				<h2>Todays View </h2>
-				<AddTaskForm />
+				<AddTaskForm addTask={this.props.addTask} />
 			</Fragment>
 		);
 	}
