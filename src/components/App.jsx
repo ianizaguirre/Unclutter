@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import '../css/App.css';
 
 import Header from './Header';
-import AddTaskForm from './AddTaskForm';
+import TodayView from './TodayView';
 import ToDoList from './ToDoList';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
 				<div className="Center-this">
 					<h1>This is the Start of the App Component</h1>
 					<ToDoList />
-					<AddTaskForm />
+					<TodayView />
 				</div>
 			</Fragment>
 		);

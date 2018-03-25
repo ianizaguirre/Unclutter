@@ -7,12 +7,13 @@ class AddTaskForm extends Component {
     event.preventDefault();
     const entryContents = this.myInput.value.value;
     console.log(entryContents);
+    event.currentTarget.reset();
   };
 
   render() {
     return (
       <Fragment>
-        <h3> To Do Item Component - EXAMPLE </h3>
+        <h3> AddTaskForm:</h3>
 
         <form onSubmit={this.addToDoEntry}>
           <input type="text" ref={this.myInput} placeholder="Enter a Task" required />
