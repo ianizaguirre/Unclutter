@@ -12,7 +12,13 @@ class App extends Component {
 	};
 
 	handleAddTask = someTask => {
-		console.log(someTask);
+		const tasks = { ...this.state.tasks };
+
+		tasks[`task${Date.now()}`] = someTask;
+
+		this.setState({
+			tasks: tasks
+		});
 	};
 
 	render() {

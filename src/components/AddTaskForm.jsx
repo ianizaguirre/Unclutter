@@ -5,8 +5,8 @@ class AddTaskForm extends Component {
 
   addToDoEntry = event => {
     event.preventDefault();
-    const userEntryContent = this.myInput.value.value;
-    this.props.addTask(userEntryContent);
+    const userTaskEntry = this.myInput.value.value;
+    this.props.addTask(userTaskEntry);
     event.currentTarget.reset();
   };
 
