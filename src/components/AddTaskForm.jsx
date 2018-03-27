@@ -1,11 +1,15 @@
 import React, { Component, Fragment } from 'react';
 
 class AddTaskForm extends Component {
-  myInput = React.createRef();
+  nameRef = React.createRef();
 
   addToDoEntry = event => {
     event.preventDefault();
-    const userTaskEntry = this.myInput.value.value;
+
+    const userTaskEntry = {
+      name: this.nameRef.value.value
+    };
+
     this.props.addTask(userTaskEntry);
     event.currentTarget.reset();
   };
@@ -16,7 +20,13 @@ class AddTaskForm extends Component {
         <h3> AddTaskForm:</h3>
 
         <form onSubmit={this.addToDoEntry}>
-          <input type="text" ref={this.myInput} placeholder="Enter a Task" required />
+          <input
+            name="name"
+            type="text"
+            ref={this.nameRef}
+            placeholder="Enter a Task"
+            required
+          />
 
           <button type="submit"> Add Task → </button>
         </form>
