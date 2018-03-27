@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TaskModel extends Component {
+class Task extends Component {
 	render() {
 		const { name } = this.props.dummyDetails;
 
@@ -13,4 +13,4 @@ class TaskModel extends Component {
 		);
 	}
 }
-export default TaskModel;
+export default Task;
