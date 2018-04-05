@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 class Task extends Component {
-	render() {
-		const { name } = this.props.dummyDetails;
+  render() {
+    const { name } = this.props.iterateDetails;
 
-		return (
-			<li>
-				<p>{name}</p>
+    return (
+      <li>
+        <p>{name}</p>
 
-				<button> Remove Task </button>
-			</li>
-		);
-	}
+        <button> Remove Task </button>
+      </li>
+    );
+  }
 }
 export default Task;
