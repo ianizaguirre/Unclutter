@@ -8,7 +8,8 @@ import ToDoList from '../components/ToDoList';
 
 class App extends Component {
   state = {
-    tasks: {}
+    tasks: {},
+    quota: {}
   };
 
   handleAddTask = someTask => {
@@ -18,6 +19,16 @@ class App extends Component {
 
     this.setState({
       tasks: tasks
+    });
+  };
+
+  addToQuota = key => {
+    const quota = { ...this.state.quota };
+
+    quota[key] = quota[key] + 1 || 1;
+
+    this.setState({
+      quota: quota
     });
   };
 
