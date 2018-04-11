@@ -8,12 +8,18 @@ const ListItem = styled.li`
   border-top-style: solid;
   border-bottom-style: solid;
   border-width: 1px;
+  margin-bottom: 15px;
 `;
 const FlexContainer = styled.div`
   display: flex;
 `;
-const Column = styled.div`
-  width: 33.3%;
+const Column1 = styled.div`
+  align-self: center;
+  margin-right: auto;
+`;
+const Column2 = styled.div`
+  align-self: center;
+  margin-left: auto;
 `;
 class Task extends Component {
   render() {
@@ -22,13 +28,12 @@ class Task extends Component {
     return (
       <ListItem>
         <FlexContainer>
-          <Column>
-            <p>{name}</p>
-          </Column>
-
-          <Column>
+          <Column1>
+            <p> {name} </p>
+          </Column1>
+          <Column2>
             <button> Remove Task </button>
-          </Column>
+          </Column2>
         </FlexContainer>
       </ListItem>
     );
