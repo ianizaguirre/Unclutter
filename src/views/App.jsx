@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import '../css/App.css';
+//import '../css/App.css';
 
 import Header from '../components/Header';
 import TodayView from '../components/TodayView';
@@ -37,11 +37,11 @@ class App extends Component {
       <Fragment>
         <Header />
 
-        <div className="Center-this">
-          <ToDoList tasks={this.state.tasks} />
+        <div className="Wrap-this">Add Task Form:</div>
 
-          <TodayView addTask={this.handleAddTask} />
-        </div>
+        <ToDoList tasks={this.state.tasks} />
+
+        <TodayView addTask={this.handleAddTask} />
       </Fragment>
     );
   }

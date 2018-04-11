@@ -6,7 +6,7 @@ import Router from './components/Router';
 import registerServiceWorker from './registerServiceWorker';
 
 const renderApp = () => {
-	render(<Router />, document.getElementById('root'));
+  render(<Router />, document.getElementById('root'));
 };
 
 renderApp();
