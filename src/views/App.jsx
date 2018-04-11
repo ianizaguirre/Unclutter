@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../css/App.css';
 
@@ -59,23 +59,21 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Wrapper>
-          <Header />
+      <Wrapper>
+        <Header />
 
-          <FlexContainer>
-            <Column>Column1</Column>
-            <MiddleColumn>
-              <Gutter>
-                <Title>Today</Title>
-                <ToDoList tasks={this.state.tasks} />
-                <TodayView addTask={this.handleAddTask} />
-              </Gutter>
-            </MiddleColumn>
-            <Column>Column3</Column>
-          </FlexContainer>
-        </Wrapper>
-      </Fragment>
+        <FlexContainer>
+          <Column>Column1</Column>
+          <MiddleColumn>
+            <Gutter>
+              <Title>Today</Title>
+              <ToDoList tasks={this.state.tasks} />
+              <TodayView addTask={this.handleAddTask} />
+            </Gutter>
+          </MiddleColumn>
+          <Column>Column3</Column>
+        </FlexContainer>
+      </Wrapper>
     );
   }
 }

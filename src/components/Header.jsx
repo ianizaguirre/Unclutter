@@ -1,14 +1,27 @@
 import React from 'react';
 import logo from '../logo.svg';
+
+import styled from 'styled-components';
 import '../css/Header.css';
 
+const Wrapper = styled.div`
+  background-color: #568135;
+  padding-top: 25px;
+`;
+const HeaderTag = styled.header`
+  background-color: #67963f;
+  height: 110px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+`;
+
 const Header = () => (
-  <div className="Header-center-this">
-    <header className="Header">
+  <Wrapper>
+    <HeaderTag>
       <img src={logo} className="Header-logo" alt="logo" />
-      <h1 className="Header-title">Welcome to React</h1>
-    </header>
-  </div>
+    </HeaderTag>
+  </Wrapper>
 );
 
 export default Header;
