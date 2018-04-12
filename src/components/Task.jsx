@@ -21,6 +21,28 @@ const Column2 = styled.div`
   align-self: center;
   margin-left: auto;
 `;
+
+const Button = styled.button`
+  color: #e44232;
+  background-color: #ffffff;
+  border-color: #e44232;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 500;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #e44232;
+    outline: 0;
+    border-color: transparent;
+  }
+`;
+
 class Task extends Component {
   render() {
     const { name } = this.props.iterateDetails;
@@ -32,7 +54,7 @@ class Task extends Component {
             <p> {name} </p>
           </Column1>
           <Column2>
-            <button> Remove Task </button>
+            <Button> Delete Task </Button>
           </Column2>
         </FlexContainer>
       </ListItem>

@@ -24,6 +24,7 @@ const Button = styled.button`
   border: 2px solid;
   border-radius: 4px;
   padding: 8px 16px;
+  cursor: pointer;
 `;
 
 class AddTaskForm extends Component {

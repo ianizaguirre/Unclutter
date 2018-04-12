@@ -9,8 +9,9 @@ import ToDoList from '../components/ToDoList';
 const Wrapper = styled.div`
   background-color: #fafafa;
 `;
-const Title = styled.h2`
+const Title = styled.h3`
   font-weight: 300;
+  font-size: 21px;
 `;
 
 const FlexContainer = styled.div`
