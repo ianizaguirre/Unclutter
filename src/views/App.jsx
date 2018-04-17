@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../css/App.css';
 
+import base from '../base';
+
 import Header from '../components/Header';
 import TodayView from '../components/TodayView';
 import ToDoList from '../components/ToDoList';
@@ -37,6 +39,19 @@ class App extends Component {
     tasks: {},
     quota: {}
   };
+
+  componentDidMount() {
+    // Destructure this => ${this.props.match.params.storeId}
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.sessionId}/tasks`, {
+      context: this,
+      state: `tasks`
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   handleAddTask = someTask => {
     const tasks = { ...this.state.tasks };

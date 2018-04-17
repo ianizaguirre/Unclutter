@@ -10,7 +10,7 @@ const Router = () => (
     <Fragment>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/app" component={App} />
+        <Route path="/app/:sessionId" component={App} />
 
         <Route component={FourOhFour} />
       </Switch>

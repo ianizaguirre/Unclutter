@@ -4,9 +4,12 @@ import '../css/Landing.css';
 import Header from './Header';
 
 class Landing extends Component {
+  myInput = React.createRef();
+
   goToMainApp = event => {
     event.preventDefault();
-    this.props.history.push(`/app/`);
+    const sessionIdName = this.myInput.value.value;
+    this.props.history.push(`/app/${sessionIdName}`);
   };
 
   render() {
@@ -14,12 +17,11 @@ class Landing extends Component {
       <Fragment>
         <Header />
 
-        <div className="Center-this">
-          <form onSubmit={this.goToMainApp}>
-            <h2>This is The Landing Page, Would You Like To Enter The Application?</h2>
-            <button type="submit"> Visit Application → </button>
-          </form>
-        </div>
+        <form onSubmit={this.goToMainApp}>
+          <h2>This is The Landing Page, Would You Like To Enter The Application?</h2>
+          <input required type="text" ref={this.myInput} placeholder="Session Name" />
+          <button type="submit"> Visit Application → </button>
+        </form>
       </Fragment>
     );
   }
