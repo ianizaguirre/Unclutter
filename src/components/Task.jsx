@@ -44,6 +44,12 @@ const Button = styled.button`
 `;
 
 class Task extends Component {
+  handleClick = () => {
+    this.props.deleteTask(this.props.index);
+    // console.log('Key=========> ' + this.props.index);
+    // console.log('Button Delete Clicked');
+  };
+
   render() {
     const { name } = this.props.iterateDetails;
 
@@ -54,7 +60,7 @@ class Task extends Component {
             <p> {name} </p>
           </Column1>
           <Column2>
-            <Button> Delete Task </Button>
+            <Button onClick={this.handleClick}>Delete Task</Button>
           </Column2>
         </FlexContainer>
       </ListItem>

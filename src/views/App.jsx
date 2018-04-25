@@ -63,6 +63,17 @@ class App extends Component {
     });
   };
 
+  handleDeleteTask = key => {
+    // 1. Take a copy of state
+    const tasks = { ...this.state.tasks };
+    // 2. Update the State
+    tasks[key] = null;
+    // 3. Update State
+    this.setState({
+      tasks
+    })
+  }
+
   addToQuota = key => {
     const quota = { ...this.state.quota };
 
@@ -83,7 +94,7 @@ class App extends Component {
           <MiddleColumn>
             <Gutter>
               <Title>Today</Title>
-              <ToDoList tasks={this.state.tasks} />
+              <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
               <TodayView addTask={this.handleAddTask} />
             </Gutter>
           </MiddleColumn>
