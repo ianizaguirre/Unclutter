@@ -65,7 +65,7 @@ class EditTaskForm extends Component {
               <input type="text" name="name" onChange={this.handleChange} value={this.props.taskKey.name} />
             </Column1>
             <Column2>
-              <p>placeHolder</p>
+              <p> {this.props.taskKey.created} </p>
             </Column2>
           </FlexContainer>
         </ListItem>
