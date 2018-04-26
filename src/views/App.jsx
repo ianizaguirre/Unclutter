@@ -5,7 +5,7 @@ import '../css/App.css';
 import base from '../base';
 
 import Header from '../components/Header';
-import TodayView from '../components/TodayView';
+import Inventory from '../components/Inventory';
 import ToDoList from '../components/ToDoList';
 
 const Wrapper = styled.div`
@@ -63,6 +63,15 @@ class App extends Component {
     });
   };
 
+  handleUpdateTask = (key, updatedThisTask) => {
+    // 1. Take a copy of the current state (fish)
+    const tasks = { ...this.state.tasks };
+    // 2. Update that state
+    tasks[key] = updatedThisTask;
+    // 3. Set that to state
+    this.setState({ tasks });
+  };
+
   handleDeleteTask = key => {
     // 1. Take a copy of state
     const tasks = { ...this.state.tasks };
@@ -71,8 +80,8 @@ class App extends Component {
     // 3. Update State
     this.setState({
       tasks
-    })
-  }
+    });
+  };
 
   addToQuota = key => {
     const quota = { ...this.state.quota };
@@ -95,7 +104,8 @@ class App extends Component {
             <Gutter>
               <Title>Today</Title>
               <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
-              <TodayView addTask={this.handleAddTask} />
+              <p>============================================</p>
+              <Inventory tasks={this.state.tasks} addTask={this.handleAddTask} updateTask={this.handleUpdateTask} />
             </Gutter>
           </MiddleColumn>
           <Column>Column3</Column>

@@ -51,7 +51,7 @@ class Task extends Component {
   };
 
   render() {
-    const { name } = this.props.iterateDetails;
+    const { name } = this.props.taskKey;
 
     return (
       <ListItem>
