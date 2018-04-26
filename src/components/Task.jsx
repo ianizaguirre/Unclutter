@@ -51,13 +51,14 @@ class Task extends Component {
   };
 
   render() {
-    const { name } = this.props.taskKey;
+    const { name, created } = this.props.taskKey;
 
     return (
       <ListItem>
         <FlexContainer>
           <Column1>
             <p> {name} </p>
+            <p> {created} </p>
           </Column1>
           <Column2>
             <Button onClick={this.handleClick}>Delete Task</Button>

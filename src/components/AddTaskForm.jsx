@@ -26,15 +26,26 @@ const Button = styled.button`
   padding: 8px 16px;
   cursor: pointer;
 `;
+// getDate = () => {
+//   let today = new Date();
+//   today.setHours(0, 0, 0, 0);
+//   return today;
+// };
 
 class AddTaskForm extends Component {
   nameRef = React.createRef();
 
   addToDoEntry = event => {
     event.preventDefault();
+    const today = new Date()
+      .toString()
+      .split(' ')
+      .splice(1, 2) // .splice(1, 3) for Year
+      .join(' ');
 
     const userTaskEntry = {
-      name: this.nameRef.value.value
+      name: this.nameRef.value.value,
+      created: today
     };
 
     this.props.addTask(userTaskEntry);
