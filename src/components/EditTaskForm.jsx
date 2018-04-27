@@ -42,30 +42,75 @@ const Column2 = styled.div`
 //     border-color: transparent;
 //   }
 // `;
+const Button = styled.button`
+  /* Adapt the colours based on primary prop */
+  background: red;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+
+  ${({ buttonIsHidden }) =>
+    buttonIsHidden &&
+    `
+    background: blue;
+  `};
+`;
 
 class EditTaskForm extends Component {
+  state = {
+    buttonIsHidden: false
+  };
+
   handleChange = event => {
-    //console.log(event.currentTarget.value);
+    console.log('Change in Input Detected');
+
+    // =======================
+    // console.log(event.currentTarget); // ==> returns => whole <input... tag
+    // =======================
+    // console.log(event.currentTarget.name); // ==> returns => name (1word)
+    // =======================
+    // console.log(event.currentTarget.value); // ==> returns => whole input value
+    // =======================
+    // console.log(this.props.index); // ==> returns => task1524783116410
+    // =============================
+    // console.log(this.props.taskKeysValue); // ==> returns =>
+    // {created: "Apr 26", name: "eeeeedfssdsss"}
+    // =======================
+    // console.log(this.props.taskKeysValue.name); // ==> returns =>
+    // whole input value
+    // ================================================
     // update that fish
     // 1. Take a copy of the current fish
-    const updatedThisTask = {
-      ...this.props.taskKey,
-      [event.currentTarget.name]: event.currentTarget.value
-    };
-    // 2. When change is done then send it back upstream
-    this.props.updateTask(this.props.index, updatedThisTask);
+    // const updatedThisTask = {
+    //   ...this.props.taskKeysValue,
+    //   [event.currentTarget.name]: event.currentTarget.value
+    // };
+    // // 2. When change is done then send it back upstream
+    // this.props.updateTask(this.props.index, updatedThisTask);
+  };
+  handleClick = () => {
+    console.log('Button CLICK! ');
+    this.setState({ buttonIsHidden: !this.state.buttonIsHidden });
   };
 
   render() {
+    const isAvailable = true;
+
     return (
       <Fragment>
         <ListItem>
           <FlexContainer>
             <Column1>
-              <input type="text" name="name" onChange={this.handleChange} value={this.props.taskKey.name} />
+              <input type="text" name="name" onChange={this.handleChange} value={this.props.taskKeysValue.name} />
+
+              <Button buttonIsHidden={this.state.buttonIsHidden} onClick={this.handleClick}>
+                {isAvailable ? 'Save' : 'Sold Out'}
+              </Button>
             </Column1>
             <Column2>
-              <p> {this.props.taskKey.created} </p>
+              <p> {this.props.taskKeysValue.created} </p>
             </Column2>
           </FlexContainer>
         </ListItem>
