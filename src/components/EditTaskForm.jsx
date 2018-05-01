@@ -42,28 +42,28 @@ const Column2 = styled.div`
 //     border-color: transparent;
 //   }
 // `;
+
+// onBlur={() =>
+//   console.log(
+//     this.props.currentItem +
+//       '=' +
+//       this.props.index +
+//       '....buttonIsVisible=isAvailable= ' +
+//       this.props.isAvailable
+//   )
+// }
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
-  visibility: visible;
   background: red;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
-
-  ${({ buttonIsHidden }) =>
-    buttonIsHidden &&
-    `
-     visibility: hidden;
-  `};
+  visibility: ${props => (props.buttonIsVisible ? 'visible' : 'hidden')};
 `;
 
 class EditTaskForm extends Component {
-  // state = {
-  //   buttonIsHidden: true
-  // };
-
   handleChange = event => {
     event.preventDefault();
     console.log('Change in Input Detected');
@@ -120,15 +120,12 @@ class EditTaskForm extends Component {
                   onChange={null}
                   onFocus={this.handleFocus}
                   value={this.props.taskKeysValue.name}
-                  onBlur={() =>
-                    console.log(this.props.currentItem + '=' + this.props.index + this.props.isNotAvailable)
-                  }
                 />
 
-                <Button buttonIsHidden={this.props.isNotAvailable} onClick={this.handleClickSave}>
+                <Button buttonIsVisible={this.props.isAvailable} onClick={this.handleClickSave}>
                   Save
                 </Button>
-                <Button buttonIsHidden={this.props.isNotAvailable} onClick={this.handleClickCancel}>
+                <Button buttonIsVisible={this.props.isAvailable} onClick={this.handleClickCancel}>
                   Cancel
                 </Button>
               </form>

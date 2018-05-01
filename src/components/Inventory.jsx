@@ -9,6 +9,7 @@ import EditTaskForm from './EditTaskForm';
 // {created: "Apr 26", name: "eeeeedfssdsss"}
 //================
 
+// currentItem={this.state.currentItem}
 class Inventory extends Component {
   state = {
     currentItem: ''
@@ -31,8 +32,7 @@ class Inventory extends Component {
               taskKeysValue={this.props.tasks[key]}
               updateTask={this.props.updateTask}
               updateCurrentItem={this.handleCurrentItem}
-              isNotAvailable={this.state.currentItem !== key}
-              currentItem={this.state.currentItem}
+              isAvailable={this.state.currentItem === key}
             />
           ))}
         </ul>
