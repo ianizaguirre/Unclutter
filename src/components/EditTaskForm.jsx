@@ -44,6 +44,7 @@ const Column2 = styled.div`
 // `;
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
+  visibility: visible;
   background: red;
   font-size: 1em;
   margin: 1em;
@@ -54,16 +55,17 @@ const Button = styled.button`
   ${({ buttonIsHidden }) =>
     buttonIsHidden &&
     `
-    background: blue;
+     visibility: hidden;
   `};
 `;
 
 class EditTaskForm extends Component {
-  state = {
-    buttonIsHidden: false
-  };
+  // state = {
+  //   buttonIsHidden: true
+  // };
 
   handleChange = event => {
+    event.preventDefault();
     console.log('Change in Input Detected');
 
     // =======================
@@ -90,26 +92,49 @@ class EditTaskForm extends Component {
     // // 2. When change is done then send it back upstream
     // this.props.updateTask(this.props.index, updatedThisTask);
   };
-  handleClick = () => {
-    console.log('Button CLICK! ');
-    this.setState({ buttonIsHidden: !this.state.buttonIsHidden });
+
+  handleFocus = event => {
+    event.preventDefault();
+    this.props.updateCurrentItem(this.props.index);
+  };
+
+  handleClickSave = event => {
+    event.preventDefault();
+    this.props.updateCurrentItem(null);
+  };
+  handleClickCancel = event => {
+    event.preventDefault();
+    this.props.updateCurrentItem(null);
   };
 
   render() {
-    const isAvailable = true;
-
     return (
       <Fragment>
         <ListItem>
           <FlexContainer>
             <Column1>
-              <input type="text" name="name" onChange={this.handleChange} value={this.props.taskKeysValue.name} />
+              <form>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={null}
+                  onFocus={this.handleFocus}
+                  value={this.props.taskKeysValue.name}
+                  onBlur={() =>
+                    console.log(this.props.currentItem + '=' + this.props.index + this.props.isNotAvailable)
+                  }
+                />
 
-              <Button buttonIsHidden={this.state.buttonIsHidden} onClick={this.handleClick}>
-                {isAvailable ? 'Save' : 'Sold Out'}
-              </Button>
+                <Button buttonIsHidden={this.props.isNotAvailable} onClick={this.handleClickSave}>
+                  Save
+                </Button>
+                <Button buttonIsHidden={this.props.isNotAvailable} onClick={this.handleClickCancel}>
+                  Cancel
+                </Button>
+              </form>
             </Column1>
             <Column2>
+              <p> Date </p>
               <p> {this.props.taskKeysValue.created} </p>
             </Column2>
           </FlexContainer>

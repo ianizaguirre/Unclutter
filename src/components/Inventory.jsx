@@ -8,7 +8,18 @@ import EditTaskForm from './EditTaskForm';
 // taskKeysValue={this.props.tasks[key]}.........==> Returns ==>
 // {created: "Apr 26", name: "eeeeedfssdsss"}
 //================
+
 class Inventory extends Component {
+  state = {
+    currentItem: ''
+  };
+
+  handleCurrentItem = index => {
+    this.setState({
+      currentItem: index
+    });
+  };
+
   render() {
     return (
       <Fragment>
@@ -19,6 +30,9 @@ class Inventory extends Component {
               index={key}
               taskKeysValue={this.props.tasks[key]}
               updateTask={this.props.updateTask}
+              updateCurrentItem={this.handleCurrentItem}
+              isNotAvailable={this.state.currentItem !== key}
+              currentItem={this.state.currentItem}
             />
           ))}
         </ul>
