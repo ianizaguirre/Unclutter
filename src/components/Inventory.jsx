@@ -12,12 +12,19 @@ import EditTaskForm from './EditTaskForm';
 // currentItem={this.state.currentItem}
 class Inventory extends Component {
   state = {
-    currentItem: ''
+    currentItem: '',
+    holdRevertedTask: ''
   };
 
   handleCurrentItem = index => {
     this.setState({
       currentItem: index
+    });
+  };
+
+  handleHoldRevertedTask = revertFunk => {
+    this.setState({
+      holdRevertedTask: revertFunk
     });
   };
 
@@ -33,6 +40,8 @@ class Inventory extends Component {
               updateTask={this.props.updateTask}
               updateCurrentItem={this.handleCurrentItem}
               isAvailable={this.state.currentItem === key}
+              holdRevertedTask={this.handleHoldRevertedTask}
+              sendRevertedTask={this.state.holdRevertedTask}
             />
           ))}
         </ul>

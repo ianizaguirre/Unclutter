@@ -83,28 +83,49 @@ class EditTaskForm extends Component {
     // console.log(this.props.taskKeysValue.name); // ==> returns =>
     // whole input value
     // ================================================
-    // update that fish
-    // 1. Take a copy of the current fish
-    // const updatedThisTask = {
-    //   ...this.props.taskKeysValue,
-    //   [event.currentTarget.name]: event.currentTarget.value
-    // };
-    // // 2. When change is done then send it back upstream
-    // this.props.updateTask(this.props.index, updatedThisTask);
+    // Note: const updatedThisTask ={} is an object, not a function ?
+    // update that Task
+    // 1. Take a copy of the current task
+    // console.log('===========3========>');
+    // console.log(this.props.originalTaskValue);
+    const updatedThisTask = {
+      ...this.props.taskKeysValue, //{created: "Apr 26", name: "eeeeedfssdsss"}
+      [event.currentTarget.name]: event.currentTarget.value
+    }; // END OF OBJECT stored in variable
+
+    // 2. When change is done then send it back upstream
+    this.props.updateTask(this.props.index, updatedThisTask);
   };
 
   handleFocus = event => {
     event.preventDefault();
+
     this.props.updateCurrentItem(this.props.index);
+
+    //  ------------------
+    const taskBeforeEdits = {
+      ...this.props.taskKeysValue,
+      [event.currentTarget.name]: event.currentTarget.value
+    };
+
+    this.props.holdRevertedTask(taskBeforeEdits);
   };
 
   handleClickSave = event => {
     event.preventDefault();
     this.props.updateCurrentItem(null);
   };
+
   handleClickCancel = event => {
     event.preventDefault();
     this.props.updateCurrentItem(null);
+
+    //  ------------------
+
+    // Send back upstream
+    this.props.updateTask(this.props.index, this.props.sendRevertedTask);
+    console.log('===========xoxoxo========>');
+    // console.log(revertThisTask);
   };
 
   render() {
@@ -117,7 +138,7 @@ class EditTaskForm extends Component {
                 <input
                   type="text"
                   name="name"
-                  onChange={null}
+                  onChange={this.handleChange}
                   onFocus={this.handleFocus}
                   value={this.props.taskKeysValue.name}
                 />
