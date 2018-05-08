@@ -64,7 +64,7 @@ class App extends Component {
   };
 
   handleUpdateTask = (key, updatedThisTask) => {
-    // 1. Take a copy of the current state (fish)
+    // 1. Take a copy of the current state (task)
     const tasks = { ...this.state.tasks };
     // 2. Update that state
     tasks[key] = updatedThisTask;

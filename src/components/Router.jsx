@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing';
 import App from '../views/App';
+import DragDropZone from '../views/DragDropZone';
 import FourOhFour from './FourOhFour';
 
 const Router = () => (
@@ -11,6 +12,7 @@ const Router = () => (
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/app/:sessionId" component={App} />
+        <Route path="/zone" component={DragDropZone} />
 
         <Route component={FourOhFour} />
       </Switch>
