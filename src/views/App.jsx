@@ -5,8 +5,9 @@ import '../css/App.css';
 import base from '../base';
 
 import Header from '../components/Header';
-import Inventory from '../components/Inventory';
 import ToDoList from '../components/ToDoList';
+
+import Inventory from './Inventory';
 
 const Wrapper = styled.div`
   background-color: #fafafa;

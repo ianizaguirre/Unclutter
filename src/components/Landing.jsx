@@ -8,7 +8,7 @@ class Landing extends Component {
 
   goToMainApp = event => {
     event.preventDefault();
-    const sessionIdName = this.myInput.value.value;
+    const sessionIdName = this.myInput.current.value;
     this.props.history.push(`/app/${sessionIdName}`);
   };
 

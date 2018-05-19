@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import AddTaskForm from './AddTaskForm';
-import EditTaskForm from './EditTaskForm';
+import AddTaskForm from '../components/AddTaskForm';
+import EditTaskForm from '../components/EditTaskForm';
 //================
 // index={key} // Returns ==> task1524783116410
 // ===============
