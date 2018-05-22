@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 //import styled from 'styled-components';
-import '../css/App.css';
+//import '../css/App.css';
+
+import Inventory from './Inventory';
+import AddTaskForm from '../components/AddTaskForm';
 
 // =============================================================================
 
@@ -9,7 +12,7 @@ import '../css/App.css';
 const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `item-${k}`,
-    content: `item ${k}`
+    content: `item DOG ${k}`
   }));
 // =============================================================================
 
@@ -22,7 +25,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
+const grid = 15; // const grid = 8; // ==================> Box Thickness
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -45,7 +48,27 @@ const getListStyle = isDraggingOver => ({
 
 class DragDropZone extends Component {
   state = {
-    items: getItems(10)
+    tasks: {},
+    items: getItems(1)
+  };
+
+  handleAddTask = someTask => {
+    const tasks = { ...this.state.tasks };
+
+    tasks[`task${Date.now()}`] = someTask;
+
+    this.setState({
+      tasks: tasks
+    });
+  };
+
+  handleUpdateTask = (key, updatedThisTask) => {
+    // 1. Take a copy of the current state (task)
+    const tasks = { ...this.state.tasks };
+    // 2. Update that state
+    tasks[key] = updatedThisTask;
+    // 3. Set that to state
+    this.setState({ tasks });
   };
 
   onDragEnd = result => {
@@ -79,6 +102,8 @@ class DragDropZone extends Component {
                         {...provided.dragHandleProps}
                         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                       >
+                        <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
+
                         {item.content}
                       </div>
                     )}
@@ -89,6 +114,7 @@ class DragDropZone extends Component {
             )}
           </Droppable>
         </DragDropContext>
+        <AddTaskForm addTask={this.handleAddTask} />
       </Fragment>
     );
   }

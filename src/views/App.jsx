@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import ToDoList from '../components/ToDoList';
 
 import Inventory from './Inventory';
+import AddTaskForm from '../components/AddTaskForm';
 
 const Wrapper = styled.div`
   background-color: #fafafa;
@@ -84,15 +85,15 @@ class App extends Component {
     });
   };
 
-  addToQuota = key => {
-    const quota = { ...this.state.quota };
+  // addToQuota = key => {
+  //   const quota = { ...this.state.quota };
 
-    quota[key] = quota[key] + 1 || 1;
+  //   quota[key] = quota[key] + 1 || 1;
 
-    this.setState({
-      quota: quota
-    });
-  };
+  //   this.setState({
+  //     quota: quota
+  //   });
+  // };
 
   render() {
     return (
@@ -106,7 +107,8 @@ class App extends Component {
               <Title>Today</Title>
               <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
               <p>============================================</p>
-              <Inventory tasks={this.state.tasks} addTask={this.handleAddTask} updateTask={this.handleUpdateTask} />
+              <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
+              <AddTaskForm addTask={this.handleAddTask} />
             </Gutter>
           </MiddleColumn>
           <Column>Column3</Column>

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import AddTaskForm from '../components/AddTaskForm';
 import EditTaskForm from '../components/EditTaskForm';
 //================
 // index={key} // Returns ==> task1524783116410
@@ -45,8 +44,6 @@ class Inventory extends Component {
             />
           ))}
         </ul>
-
-        <AddTaskForm addTask={this.props.addTask} />
       </Fragment>
     );
   }
