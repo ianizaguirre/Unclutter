@@ -10,6 +10,8 @@ import ToDoList from '../components/ToDoList';
 import Inventory from './Inventory';
 import AddTaskForm from '../components/AddTaskForm';
 
+// import DragDropZone from './DragDropZone';
+
 const Wrapper = styled.div`
   background-color: #fafafa;
 `;
@@ -35,11 +37,21 @@ const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
 `;
+// =========================
+// const DropZoneList = function ({ zoneTask, children }) {
+//   return (
+//     <div>
+//       {zoneTask}
+//       {children}
+//     </div>
+//   );
+// }
 
+// ========================
 class App extends Component {
   state = {
-    tasks: {},
-    quota: {}
+    tasks: {}
+    // quota: {}
   };
 
   componentDidMount() {
@@ -107,8 +119,10 @@ class App extends Component {
               <Title>Today</Title>
               <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
               <p>============================================</p>
-              <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
-              <AddTaskForm addTask={this.handleAddTask} />
+              <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask}>
+                <AddTaskForm addTask={this.handleAddTask} />
+              </Inventory>
+              <p>===============--------------=============================</p>
             </Gutter>
           </MiddleColumn>
           <Column>Column3</Column>

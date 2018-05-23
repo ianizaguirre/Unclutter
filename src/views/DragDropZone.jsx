@@ -3,16 +3,24 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 //import styled from 'styled-components';
 //import '../css/App.css';
 
-import Inventory from './Inventory';
-import AddTaskForm from '../components/AddTaskForm';
+// import Inventory from './Inventory';
+import EditTaskForm from '../components/EditTaskForm';
 
 // =============================================================================
 
 // fake data generator
+// const getItems = count =>
+//   Array.from({ length: count }, (v, k) => k).map(k => ({
+//     id: `item-${k}`,
+//     content: `Item Number ${k}`
+//   }));
+
+// ========>  getItems(Passed Number) = count = k
 const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `item-${k}`,
-    content: `item DOG ${k}`
+    // content: `Item Number ${k}`
+    content: `Item Number ${k}`
   }));
 // =============================================================================
 
@@ -33,7 +41,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  // change background colour if dragging
+  // change background color if dragging
   background: isDragging ? 'lightgreen' : 'grey',
 
   // styles we need to apply on draggables
@@ -46,29 +54,13 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
+// ====================================
+
+// ====================================
+
 class DragDropZone extends Component {
   state = {
-    tasks: {},
-    items: getItems(1)
-  };
-
-  handleAddTask = someTask => {
-    const tasks = { ...this.state.tasks };
-
-    tasks[`task${Date.now()}`] = someTask;
-
-    this.setState({
-      tasks: tasks
-    });
-  };
-
-  handleUpdateTask = (key, updatedThisTask) => {
-    // 1. Take a copy of the current state (task)
-    const tasks = { ...this.state.tasks };
-    // 2. Update that state
-    tasks[key] = updatedThisTask;
-    // 3. Set that to state
-    this.setState({ tasks });
+    items: getItems(2)
   };
 
   onDragEnd = result => {
@@ -87,12 +79,14 @@ class DragDropZone extends Component {
   render() {
     return (
       <Fragment>
-        <h1> Drag Drop Zone </h1>
+        <h1> $$$$$$ Outside of DragDropContext container </h1>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Droppable droppableId="droppable">
             {(provided, snapshot) => (
               <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+                <h1> $$$$$$ Outside of Droppable Area </h1>
+
                 {this.state.items.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided, snapshot) => (
@@ -102,8 +96,16 @@ class DragDropZone extends Component {
                         {...provided.dragHandleProps}
                         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                       >
-                        <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
-
+                        <h1> $$$$$$ Inside of Droppable Area </h1>
+                        <EditTaskForm
+                          index={this.props.index}
+                          taskKeysValue={this.props.taskKeysValue}
+                          updateTask={this.props.updateTask}
+                          updateCurrentItem={this.props.updateCurrentItem}
+                          isAvailable={this.props.isAvailable}
+                          holdRevertedTask={this.props.holdRevertedTask}
+                          sendRevertedTask={this.props.sendRevertedTask}
+                        />
                         {item.content}
                       </div>
                     )}
@@ -114,7 +116,6 @@ class DragDropZone extends Component {
             )}
           </Droppable>
         </DragDropContext>
-        <AddTaskForm addTask={this.handleAddTask} />
       </Fragment>
     );
   }
