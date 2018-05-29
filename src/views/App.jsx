@@ -87,16 +87,23 @@ class App extends Component {
       {
         id: 3
       }
-    ]
+    ],
+    holdTasks: []
     // quota: {}
   };
 
   componentDidMount() {
+    // === Save tasks state to Firebase ===
     // Destructure this => ${this.props.match.params.storeId}
     const { params } = this.props.match;
     this.ref = base.syncState(`${params.sessionId}/tasks`, {
       context: this,
       state: `tasks`
+    });
+    // === Save holdTasks state to Firebase ===
+    this.ref = base.syncState(`${params.sessionId}/tasks`, {
+      context: this,
+      state: `holdTasks`
     });
   }
 
@@ -122,8 +129,14 @@ class App extends Component {
 
     tasks[`task${Date.now()}`] = someTask;
 
+    // === Copy tasks into holdTasks Array ==
+    const holdTasks = [...this.state.holdTasks];
+    holdTasks.push(someTask);
+    // === end ===
+
     this.setState({
-      tasks: tasks
+      tasks: tasks,
+      holdTasks: holdTasks
     });
   };
 
@@ -197,6 +210,15 @@ class App extends Component {
               </DragDropContext>
 
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+              <ul>
+                <h1> TEST </h1>
+                {Object.keys(this.state.tasks).map((key, index) => (
+                  <div key={key}>
+                    <p key={key}> GetKey--- = {key}</p>
+                    INDEX--- = {index}
+                  </div>
+                ))}
+              </ul>
 
               <p>============================================</p>
 
