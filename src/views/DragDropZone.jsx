@@ -1,27 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-//import styled from 'styled-components';
-//import '../css/App.css';
+// ----- HARD EXAMPLE !!!!!
 
-// import Inventory from './Inventory';
-import EditTaskForm from '../components/EditTaskForm';
+import React, { Component, Fragment } from 'react';
+//import styled from 'styled-components';
+import '../css/App.css';
+
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 // =============================================================================
 
-// fake data generator
-// const getItems = count =>
-//   Array.from({ length: count }, (v, k) => k).map(k => ({
-//     id: `item-${k}`,
-//     content: `Item Number ${k}`
-//   }));
-
-// ========>  getItems(Passed Number) = count = k
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k}`,
-    // content: `Item Number ${k}`
-    content: `Item Number ${k}`
-  }));
 // =============================================================================
 
 // a little function to help us with reordering the result
@@ -33,7 +19,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 15; // const grid = 8; // ==================> Box Thickness
+const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -41,7 +27,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  // change background color if dragging
+  // change background colour if dragging
   background: isDragging ? 'lightgreen' : 'grey',
 
   // styles we need to apply on draggables
@@ -54,16 +40,22 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
-// ====================================
-
-// ====================================
-
 class DragDropZone extends Component {
   state = {
-    items: getItems(2)
+    items: [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      },
+      {
+        id: 3
+      }
+    ]
   };
 
-  onDragEnd = result => {
+  handleDragEnd = result => {
     // dropped outside the list
     if (!result.destination) {
       return;
@@ -79,14 +71,12 @@ class DragDropZone extends Component {
   render() {
     return (
       <Fragment>
-        <h1> $$$$$$ Outside of DragDropContext container </h1>
+        <h1> Drag Drop Zone </h1>
 
-        <DragDropContext onDragEnd={this.onDragEnd}>
+        <DragDropContext onDragEnd={this.handleDragEnd}>
           <Droppable droppableId="droppable">
             {(provided, snapshot) => (
               <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                <h1> $$$$$$ Outside of Droppable Area </h1>
-
                 {this.state.items.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided, snapshot) => (
@@ -96,17 +86,7 @@ class DragDropZone extends Component {
                         {...provided.dragHandleProps}
                         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                       >
-                        <h1> $$$$$$ Inside of Droppable Area </h1>
-                        <EditTaskForm
-                          index={this.props.index}
-                          taskKeysValue={this.props.taskKeysValue}
-                          updateTask={this.props.updateTask}
-                          updateCurrentItem={this.props.updateCurrentItem}
-                          isAvailable={this.props.isAvailable}
-                          holdRevertedTask={this.props.holdRevertedTask}
-                          sendRevertedTask={this.props.sendRevertedTask}
-                        />
-                        {item.content}
+                        Hi {item.id}
                       </div>
                     )}
                   </Draggable>

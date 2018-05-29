@@ -1,32 +1,11 @@
 import React, { Component, Fragment } from 'react';
 
-// import EditTaskForm from '../components/EditTaskForm';
-
-import DragDropZone from './DragDropZone';
-
-//================
-// index={key} // Returns ==> task1524783116410
-// ===============
-// taskKeysValue={this.props.tasks[key]}.........==> Returns ==>
-// {created: "Apr 26", name: "eeeeedfssdsss"}
-//================
-
-// currentItem={this.state.currentItem}
-//===========================================
-
-// function handlePassAddTaskForm (props) {
-//   return (
-//     <div>
-//       {props.children}
-//     </div>
-//   );
-// };
+import EditTaskForm from '../components/EditTaskForm';
 
 class Inventory extends Component {
   state = {
     currentItem: '',
-    holdRevertedTask: '',
-    dragDropZoneTasks: {}
+    holdRevertedTask: ''
   };
 
   handleCurrentItem = index => {
@@ -46,7 +25,7 @@ class Inventory extends Component {
       <Fragment>
         <ul>
           {Object.keys(this.props.tasks).map(key => (
-            <DragDropZone
+            <EditTaskForm
               key={key}
               index={key}
               taskKeysValue={this.props.tasks[key]}
@@ -57,8 +36,6 @@ class Inventory extends Component {
               sendRevertedTask={this.state.holdRevertedTask}
             />
           ))}
-
-          <div> {this.props.children} </div>
         </ul>
       </Fragment>
     );
