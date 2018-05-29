@@ -50,6 +50,7 @@ class AddTaskForm extends Component {
     };
 
     this.props.addTask(userTaskEntry);
+    this.props.holdTasks(userTaskEntry);
     event.currentTarget.reset();
   };
 

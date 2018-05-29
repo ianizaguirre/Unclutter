@@ -101,7 +101,7 @@ class App extends Component {
       state: `tasks`
     });
     // === Save holdTasks state to Firebase ===
-    this.ref = base.syncState(`${params.sessionId}/tasks`, {
+    this.ref = base.syncState(`${params.sessionId}/holdTasks`, {
       context: this,
       state: `holdTasks`
     });
@@ -129,13 +129,19 @@ class App extends Component {
 
     tasks[`task${Date.now()}`] = someTask;
 
+    this.setState({
+      tasks: tasks
+    });
+  };
+
+  handleHoldTasks = someTask => {
     // === Copy tasks into holdTasks Array ==
+    // const holdTasks = [ ...this.state.holdTasks ];
+    // holdTasks.push(someTask);
     const holdTasks = [...this.state.holdTasks];
     holdTasks.push(someTask);
     // === end ===
-
     this.setState({
-      tasks: tasks,
       holdTasks: holdTasks
     });
   };
@@ -224,7 +230,7 @@ class App extends Component {
 
               <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
 
-              <AddTaskForm addTask={this.handleAddTask} />
+              <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
               <p>===============--------------=============================</p>
             </Gutter>
           </MiddleColumn>
