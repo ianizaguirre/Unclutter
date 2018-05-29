@@ -160,6 +160,11 @@ class App extends Component {
     const tasks = { ...this.state.tasks };
     // 2. Update the State
     tasks[key] = null;
+    // ===========
+    // const holdTasks = { ...this.state.holdTasks };
+    // this.state.holdTasks.filter((_, i) => i !== index);
+
+    // =========
     // 3. Update State
     this.setState({
       tasks
@@ -217,7 +222,7 @@ class App extends Component {
 
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
               <ul>
-                <h1> TEST </h1>
+                <h1> TEST 1 with Object </h1>
                 {Object.keys(this.state.tasks).map((key, index) => (
                   <div key={key}>
                     <p key={key}> GetKey--- = {key}</p>
@@ -227,6 +232,16 @@ class App extends Component {
               </ul>
 
               <p>============================================</p>
+              <h1> Test 2 with Array </h1>
+
+              {this.state.holdTasks.map((item, index) => (
+                <div key={item.id}>
+                  Hi {item.id}
+                  ..............NAME: {item.name}
+                </div>
+              ))}
+
+              <p>==============================================</p>
 
               <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
 
