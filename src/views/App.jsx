@@ -79,13 +79,13 @@ class App extends Component {
     tasks: {},
     items: [
       {
-        id: 1
+        id: '1'
       },
       {
-        id: 2
+        id: '2'
       },
       {
-        id: 3
+        id: '3'
       }
     ],
     holdTasks: []
@@ -117,10 +117,10 @@ class App extends Component {
       return;
     }
 
-    const items = reorder(this.state.items, result.source.index, result.destination.index);
+    const holdTasks = reorder(this.state.holdTasks, result.source.index, result.destination.index);
 
     this.setState({
-      items: items
+      holdTasks
     });
   };
 
@@ -199,7 +199,7 @@ class App extends Component {
                 <Droppable droppableId="droppable">
                   {(provided, snapshot) => (
                     <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                      {this.state.items.map((item, index) => (
+                      {this.state.holdTasks.map((item, index) => (
                         <Draggable key={item.id} draggableId={item.id} index={index}>
                           {(provided, snapshot) => (
                             <div
@@ -208,8 +208,7 @@ class App extends Component {
                               {...provided.dragHandleProps}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              <ul> SOME LIST BRO </ul>
-                              Hi {item.id}
+                              Hi {item.id} ............. NAME: {item.name}
                             </div>
                           )}
                         </Draggable>
@@ -221,17 +220,7 @@ class App extends Component {
               </DragDropContext>
 
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-              <ul>
-                <h1> TEST 1 with Object </h1>
-                {Object.keys(this.state.tasks).map((key, index) => (
-                  <div key={key}>
-                    <p key={key}> GetKey--- = {key}</p>
-                    INDEX--- = {index}
-                  </div>
-                ))}
-              </ul>
 
-              <p>============================================</p>
               <h1> Test 2 with Array </h1>
 
               {this.state.holdTasks.map((item, index) => (
