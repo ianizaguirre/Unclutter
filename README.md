@@ -31,15 +31,16 @@
 
 * React.js
 * JSX
-* Firebase
 
 &nbsp;
 
 
 
-### Libraries Implemented
+### A Few Cool Libraries Used
 
 * [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
+* [Firebase Javascript SDK](https://github.com/firebase/firebase-js-sdk)
+* [Styled-Components](https://github.com/styled-components/styled-components)
 
 
 
