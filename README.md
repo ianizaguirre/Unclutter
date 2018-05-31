@@ -14,7 +14,7 @@
 
 ## Features
 
-* Includes sign-up / sign-in / sign-out functionality, with encrypted passwords & an authorization flow --> ( Development In Progress )
+* Includes sign-up / sign-in / sign-out functionality, with encrypted passwords & an authorization flow -(Development In Progress)
 * Full CRUD routes
 * Deployed online and accessible to the public
 
@@ -50,6 +50,12 @@
 
 
 
+
+## Application Map
+
+* Image Coming Soon
+
+&nbsp;
 
 ---
 
