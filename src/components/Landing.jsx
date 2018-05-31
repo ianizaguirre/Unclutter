@@ -8,7 +8,7 @@ class Landing extends Component {
 
   goToMainApp = event => {
     event.preventDefault();
-    const sessionIdName = this.myInput.current.value;
+    const sessionIdName = this.myInput.value.value;
     this.props.history.push(`/app/${sessionIdName}`);
   };
 
@@ -18,7 +18,7 @@ class Landing extends Component {
         <Header />
 
         <form onSubmit={this.goToMainApp}>
-          <h2>This is The Landing Page, Would You Like To Enter The Application?</h2>
+          <h2>This is The Landing Page!!, Would You Like To Enter The Application?</h2>
           <input required type="text" ref={this.myInput} placeholder="Session Name" />
           <button type="submit"> Visit Application → </button>
         </form>

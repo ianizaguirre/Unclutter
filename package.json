@@ -1,23 +1,28 @@
 {
-  "name": "todo-app",
-  "version": "0.1.0",
+  "name": "unclutter-app",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "firebase": "^4.12.1",
-    "flow-bin": "^0.67.1",
+    "flow-bin": "^0.73.0",
     "re-base": "^3.2.2",
     "react": "^16.3.0-alpha.1",
     "react-beautiful-dnd": "^7.1.2",
     "react-dom": "^16.3.0-alpha.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
+    "serve": "^7.1.5",
     "styled-components": "^3.2.5"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "now": {
+    "alias": "unclutter-app"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
