@@ -37,7 +37,7 @@
 
 
 
-### Libraries
+### Libraries Implemented
 
 * [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
 
