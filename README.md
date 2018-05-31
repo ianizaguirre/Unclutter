@@ -19,7 +19,7 @@
 
 &nbsp;
 
-### Deployment Details
+##### Deployment Details
 
 * Deployed online and accessible to the public
 * Deployed using [Now](https://zeit.co/now)
