@@ -22,7 +22,7 @@
 &nbsp;
 
 
-## Tech Details
+### Tech Details
 
 * React.js
 * JSX
@@ -32,7 +32,7 @@
 
 
 
-## Libraries
+### Libraries
 
 * [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
 
