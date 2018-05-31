@@ -16,8 +16,13 @@
 
 * Includes sign-up / sign-in / sign-out functionality, with encrypted passwords & an authorization flow -(Development In Progress)
 * Full CRUD routes
-* Deployed online and accessible to the public
 
+&nbsp;
+
+### Deployment Details
+
+* Deployed online and accessible to the public
+* Deployed using [Now](https://zeit.co/now)
 
 &nbsp;
 
@@ -37,13 +42,6 @@
 * [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
 
 
-&nbsp;
-
-
-
-### Deployment Details
-
-* Deployed using [Now](https://zeit.co/now)
 
 
 &nbsp;
