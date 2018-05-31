@@ -51,7 +51,7 @@
 
 
 
-
+---
 
 ## Project Demo
 
@@ -64,15 +64,13 @@ To demo this application, please click the following link:
 &nbsp;
 
 
----
+
 
 ## Changelog
 
 | Date | Version | Description |
 | --- | --- | ---
 | `May 30, 2018` | 1.00 | Initial release
-
-
 
 
 
