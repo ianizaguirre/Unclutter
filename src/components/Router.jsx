@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing';
-import App from '../views/App';
-import DragDropZone from '../views/DragDropZone';
+import App from '../containers/App';
+import DragDropZone from '../containers/DragDropZone';
 import FourOhFour from './FourOhFour';
 
 const Router = () => (
