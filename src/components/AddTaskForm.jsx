@@ -44,7 +44,7 @@ class AddTaskForm extends Component {
       .join(' ');
 
     const userTaskEntry = {
-      name: this.nameRef.current.value,
+      name: this.nameRef.value.value,
       created: today,
       id: `${Date.now()}`
     };

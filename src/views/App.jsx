@@ -195,9 +195,40 @@ class App extends Component {
 
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 
+              <DragDropContext onDragEnd={this.handleDragEnd}>
+                <Droppable droppableId="droppable">
+                  {(provided, snapshot) => (
+                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+                      {this.state.holdTasks.map((item, index) => (
+                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
+                            >
+                              Hi {item.id} ............. NAME: {item.name}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
+
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 
               <h1> Test 2 with Array </h1>
+
+              {this.state.holdTasks.map((item, index) => (
+                <div key={item.id}>
+                  Hi {item.id}
+                  ..............NAME: {item.name}
+                </div>
+              ))}
 
               <p>==============================================</p>
 
