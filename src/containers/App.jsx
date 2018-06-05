@@ -9,7 +9,7 @@ import ToDoList from '../components/ToDoList';
 import AddTaskForm from '../components/AddTaskForm';
 
 import Inventory from './Inventory';
-// import DragDropZone from './DragDropZone';
+
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 // =============================================================================
@@ -138,12 +138,19 @@ class App extends Component {
   };
 
   handleUpdateTask = (key, updatedThisTask) => {
+    // // 1. Take a copy of the current state (task)
+    // const tasks = { ...this.state.tasks };
+    // // 2. Update that state
+    // tasks[key] = updatedThisTask;
+    // // 3. Set that to state
+    // this.setState({ tasks });
+    // =============================================
     // 1. Take a copy of the current state (task)
-    const tasks = { ...this.state.tasks };
+    const holdTasks = [...this.state.holdTasks];
     // 2. Update that state
-    tasks[key] = updatedThisTask;
+    holdTasks[key] = updatedThisTask;
     // 3. Set that to state
-    this.setState({ tasks });
+    this.setState({ holdTasks });
   };
 
   handleDeleteTask = key => {
@@ -213,7 +220,7 @@ class App extends Component {
 
               <p>==============================================</p>
 
-              <Inventory tasks={this.state.tasks} updateTask={this.handleUpdateTask} />
+              <Inventory tasks={this.state.holdTasks} updateTask={this.handleUpdateTask} />
 
               <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
               <p>===============--------------=============================</p>
