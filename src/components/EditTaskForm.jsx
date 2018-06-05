@@ -131,7 +131,7 @@ class EditTaskForm extends Component {
     // update that Task
     // 1. Take a copy of the current task
     const updatedThisTask = {
-      ...this.props.taskKeysValue, //{created: "Apr 26", name: "eeeeedfssdsss"}
+      ...this.props.taskKeysValue, //{created: "Apr 26", content: "eeeeedfssdsss"}
       [event.currentTarget.name]: event.currentTarget.value
     }; // END OF OBJECT stored in variable
 
@@ -179,10 +179,10 @@ class EditTaskForm extends Component {
               <Column1>
                 <Input
                   type="text"
-                  name="name"
+                  name="content"
                   onChange={this.handleChange}
                   onFocus={this.handleFocus}
-                  value={this.props.taskKeysValue.name}
+                  value={this.props.taskKeysValue.content}
                 />
               </Column1>
               <Column3>

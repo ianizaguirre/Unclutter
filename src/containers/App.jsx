@@ -77,19 +77,7 @@ const Gutter = styled.div`
 class App extends Component {
   state = {
     tasks: {},
-    items: [
-      {
-        id: '1'
-      },
-      {
-        id: '2'
-      },
-      {
-        id: '3'
-      }
-    ],
     holdTasks: []
-    // quota: {}
   };
 
   componentDidMount() {
@@ -171,16 +159,6 @@ class App extends Component {
     });
   };
 
-  // addToQuota = key => {
-  //   const quota = { ...this.state.quota };
-
-  //   quota[key] = quota[key] + 1 || 1;
-
-  //   this.setState({
-  //     quota: quota
-  //   });
-  // };
-
   render() {
     return (
       <Wrapper>
@@ -208,7 +186,7 @@ class App extends Component {
                               {...provided.dragHandleProps}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              Hi {item.id} ............. NAME: {item.name}
+                              Hi {item.id} ............. CONTENT: {item.content}
                             </div>
                           )}
                         </Draggable>
@@ -226,7 +204,7 @@ class App extends Component {
               {this.state.holdTasks.map((item, index) => (
                 <div key={item.id}>
                   Hi {item.id}
-                  ..............NAME: {item.name}
+                  ..............CONTENT: {item.content}
                 </div>
               ))}
 

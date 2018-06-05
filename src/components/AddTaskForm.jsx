@@ -33,7 +33,7 @@ const Button = styled.button`
 // };
 // "created" is set here BUT Lives in EditTaskForm.jsx
 class AddTaskForm extends Component {
-  nameRef = React.createRef();
+  contentRef = React.createRef();
 
   addToDoEntry = event => {
     event.preventDefault();
@@ -44,7 +44,7 @@ class AddTaskForm extends Component {
       .join(' ');
 
     const userTaskEntry = {
-      name: this.nameRef.value.value,
+      content: this.contentRef.value.value,
       created: today,
       id: `${Date.now()}`
     };
@@ -60,7 +60,7 @@ class AddTaskForm extends Component {
         <Title>Add Task Form:</Title>
 
         <form onSubmit={this.addToDoEntry}>
-          <Input name="name" type="text" innerRef={this.nameRef} placeholder="Enter a Task" required />
+          <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
 
           <Button type="submit"> Add Task → </Button>
         </form>
