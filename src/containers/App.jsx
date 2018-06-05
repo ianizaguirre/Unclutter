@@ -174,6 +174,12 @@ class App extends Component {
     });
   };
   //>>>>>>>>>>>>>>>>>>>>>>>>
+  // handleBodyClickDetection = event => {
+  //   event.preventDefault();
+  //   console.log('Body Click Detected');
+  // };
+
+  // ======================
 
   render() {
     return (

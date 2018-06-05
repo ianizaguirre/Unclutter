@@ -16,7 +16,8 @@ const ListItemsWrapper = styled.li`
 const FlexContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  /* align-items: center; */
+  align-items: baseline;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -25,6 +26,7 @@ const FlexContainerColumn = styled.div`
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
+  width: 75%;
 `;
 const FlexContainerRow = styled.div`
   display: flex;
@@ -35,6 +37,7 @@ const FlexContainerRow = styled.div`
 const Column1 = styled.div`
   margin-right: auto;
   flex: 1 0 50%;
+  width: ${props => (props.primary ? '100%' : 'inherit')};
 `;
 
 const Column2 = Column1.extend`
@@ -52,6 +55,11 @@ const Column2 = Column1.extend`
   }
 `;
 
+const Column2Ellipise = Column1.extend`
+  flex: none;
+  padding-left: 10px;
+`;
+
 const Column3 = Column1.extend`
   flex: 0 1 100%;
   margin-top: 4px;
@@ -60,6 +68,12 @@ const Column3 = Column1.extend`
 const Input = styled.input`
   font-size: 14px;
   color: #535a5b;
+  min-width: 100%;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
 `;
 
 const Button = styled.button`
@@ -80,22 +94,22 @@ const Button = styled.button`
 `;
 //=========================
 const ButtonDel = styled.button`
-  color: #e44232;
-  background-color: #ffffff;
-  border-color: #e44232;
+  color: #333;
+  background-color: transparent;
+  border: transparent;
   font-size: 13px;
   line-height: 15px;
-  font-weight: 500;
-  border: 2px solid;
-  border-radius: 4px;
-  padding: 8px 16px;
+  margin: 0 auto;
+  width: 100%;
+  font-weight: 400;
+  padding: 8px 0px;
   cursor: pointer;
   transition: all 0.25s ease;
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 
   &:hover {
-    color: #ffffff;
-    background-color: #e44232;
+    color: #333;
+    background-color: #e9e8e8;
     outline: 0;
     border-color: transparent;
   }
@@ -127,14 +141,14 @@ class EditTaskForm extends Component {
       [event.currentTarget.name]: event.currentTarget.value
     }; // END OF OBJECT stored in variable
 
-    console.log('this.props.taskKeysValue');
-    console.log(this.props.taskKeysValue);
-    console.log('=======');
-    console.log('updatedThisTask');
-    console.log(updatedThisTask);
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXX');
-    console.log('this.props.indexman');
-    console.log(this.props.indexman);
+    // console.log('this.props.taskKeysValue');
+    // console.log(this.props.taskKeysValue);
+    // console.log('=======');
+    // console.log('updatedThisTask');
+    // console.log(updatedThisTask);
+    // console.log('XXXXXXXXXXXXXXXXXXXXXXXX');
+    // console.log('this.props.indexman');
+    // console.log(this.props.indexman);
 
     // 2. When change is done then send it back upstream
     this.props.updateTask(this.props.indexman, updatedThisTask);
@@ -145,7 +159,7 @@ class EditTaskForm extends Component {
 
     this.props.updateCurrentItem(this.props.indexman);
     console.log('Yooo is this the index inside of handleFocus()');
-    console.log(this.props.indexman);
+    // console.log(this.props.indexman);
 
     //  ------------------
     const taskBeforeEdits = {
@@ -153,14 +167,14 @@ class EditTaskForm extends Component {
       [event.currentTarget.name]: event.currentTarget.value
     };
 
-    console.log('Inside of handleFocus() ====> event.currentTarget.name');
-    console.log(event.currentTarget.name);
+    // console.log('Inside of handleFocus() ====> event.currentTarget.name');
+    // console.log(event.currentTarget.name);
 
-    console.log('Inside of handleFocus() ====> event.currentTarget.value');
-    console.log(event.currentTarget.value);
+    // console.log('Inside of handleFocus() ====> event.currentTarget.value');
+    // console.log(event.currentTarget.value);
 
-    console.log('Inside of handleFocus() ====> taskBeforeEdits');
-    console.log(taskBeforeEdits);
+    // console.log('Inside of handleFocus() ====> taskBeforeEdits');
+    // console.log(taskBeforeEdits);
 
     this.props.holdRevertedTask(taskBeforeEdits);
   };
@@ -184,8 +198,8 @@ class EditTaskForm extends Component {
 
   handleClickDelete = event => {
     event.preventDefault();
-    console.log('=============== INSIDE handleClickDELETE ====>');
-    console.log(this.props.indexman);
+    // console.log('=============== INSIDE handleClickDELETE ====>');
+    // console.log(this.props.indexman);
     this.props.deleteTask(this.props.indexman);
     // console.log('Key=========> ' + this.props.index);
     // console.log('Button Delete Clicked');
@@ -197,7 +211,7 @@ class EditTaskForm extends Component {
         <ListItemsWrapper>
           <FlexContainerWrapper>
             <FlexContainerColumn>
-              <Column1>
+              <Column1 primary>
                 <Input
                   type="text"
                   name="content"
@@ -213,10 +227,6 @@ class EditTaskForm extends Component {
                 <Button cancel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickCancel}>
                   Cancel
                 </Button>
-                <ButtonDel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickDelete}>
-                  🗑
-                </ButtonDel>
-                =====>> <ToggleMenu isAvailable={this.props.isAvailable}> MENU </ToggleMenu>
               </Column3>
             </FlexContainerColumn>
 
@@ -224,6 +234,13 @@ class EditTaskForm extends Component {
               <Column2>
                 <p> {this.props.creation} </p>
               </Column2>
+              <Column2Ellipise>
+                <ToggleMenu isAvailable={true}>
+                  <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
+                    Delete task
+                  </ButtonDel>
+                </ToggleMenu>
+              </Column2Ellipise>
             </FlexContainerRow>
           </FlexContainerWrapper>
         </ListItemsWrapper>
