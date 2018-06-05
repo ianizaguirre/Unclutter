@@ -71,6 +71,7 @@ const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
 `;
+
 // =========================
 
 // ========================
@@ -81,17 +82,19 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // === Save tasks state to Firebase ===
     // Destructure this => ${this.props.match.params.storeId}
     const { params } = this.props.match;
+    // === Save tasks state to Firebase ===
     this.ref = base.syncState(`${params.sessionId}/tasks`, {
       context: this,
       state: `tasks`
     });
+
     // === Save holdTasks state to Firebase ===
     this.ref = base.syncState(`${params.sessionId}/holdTasks`, {
       context: this,
-      state: `holdTasks`
+      state: `holdTasks`,
+      asArray: true
     });
   }
 
