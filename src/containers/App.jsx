@@ -4,7 +4,6 @@ import '../css/App.css';
 
 import base from '../base';
 import Header from '../components/Header';
-import ToDoList from '../components/ToDoList';
 
 import AddTaskForm from '../components/AddTaskForm';
 
@@ -70,10 +69,8 @@ const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
 `;
+// ============================================================================
 
-// =========================
-
-// ========================
 class App extends Component {
   state = {
     tasks: {},
@@ -127,25 +124,16 @@ class App extends Component {
   };
 
   handleHoldTasks = someTask => {
-    // === Copy tasks into holdTasks Array ==
-    // const holdTasks = [ ...this.state.holdTasks ];
-    // holdTasks.push(someTask);
     const holdTasks = [...this.state.holdTasks];
+
     holdTasks.push(someTask);
-    // === end ===
+
     this.setState({
       holdTasks: holdTasks
     });
   };
 
   handleUpdateTask = (key, updatedThisTask) => {
-    // // 1. Take a copy of the current state (task)
-    // const tasks = { ...this.state.tasks };
-    // // 2. Update that state
-    // tasks[key] = updatedThisTask;
-    // // 3. Set that to state
-    // this.setState({ tasks });
-    // =============================================
     console.log('=========> handleUpdateTask === App.js ===> KEY');
     console.log(key);
     console.log('-----------------------------------');
@@ -164,21 +152,15 @@ class App extends Component {
 
   handleDeleteTask = key => {
     // 1. Take a copy of state
-    const tasks = { ...this.state.tasks };
+    const holdTasks = [...this.state.holdTasks];
     // 2. Update the State
-    tasks[key] = null;
-    // ===========
-    // const holdTasks = { ...this.state.holdTasks };
-    // this.state.holdTasks.filter((_, i) => i !== index);
-
-    // =========
+    holdTasks[key] = null;
     // 3. Update State
     this.setState({
-      tasks
+      holdTasks: holdTasks
     });
   };
 
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   handleUpdateCurrentItem = index => {
     this.setState({
@@ -191,7 +173,6 @@ class App extends Component {
     });
   };
   //>>>>>>>>>>>>>>>>>>>>>>>>
-  //>>>>>>>>>>>>>>>>>>>>>>>>
 
   render() {
     return (
@@ -203,11 +184,6 @@ class App extends Component {
           <MiddleColumn>
             <Gutter>
               <Title>Today</Title>
-              <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
-
-              <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-              <h1> Test with Inventory </h1>
-              <p>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>></p>
 
               <DragDropContext onDragEnd={this.handleDragEnd}>
                 <Droppable droppableId="droppable">
@@ -232,6 +208,7 @@ class App extends Component {
                                 holdRevertedTask={this.handleHoldRevertedTask}
                                 sendRevertedTask={this.state.holdRevertedTask}
                                 updateCurrentItem={this.handleUpdateCurrentItem}
+                                deleteTask={this.handleDeleteTask}
                                 isAvailable={this.state.currentItem === index}
                                 value={item.content}
                                 creation={item.created}
@@ -259,9 +236,7 @@ class App extends Component {
 
               <p>==============================================</p>
 
-              <p>---------------------------------------------------</p>
               <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
-              <p>---------------------------------------------------</p>
             </Gutter>
           </MiddleColumn>
           <Column>Column3</Column>

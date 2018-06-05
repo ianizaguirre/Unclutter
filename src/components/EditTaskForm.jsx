@@ -77,7 +77,27 @@ const Button = styled.button`
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 `;
+//=========================
+const ButtonDel = styled.button`
+  color: #e44232;
+  background-color: #ffffff;
+  border-color: #e44232;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 500;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 
+  &:hover {
+    color: #ffffff;
+    background-color: #e44232;
+    outline: 0;
+    border-color: transparent;
+  }
+`;
 // ================================================
 // console.log(event.currentTarget); // ==> returns => whole <input... tag
 // =======================
@@ -95,11 +115,6 @@ const Button = styled.button`
 // ================================================
 
 class EditTaskForm extends Component {
-  state = {
-    // currentItem: '',
-    // holdRevertedTask: ''
-  };
-
   handleChange = event => {
     event.preventDefault();
     console.log('Change in Input Detected');
@@ -165,6 +180,15 @@ class EditTaskForm extends Component {
     // console.log(revertThisTask);
   };
 
+  handleClickDelete = event => {
+    event.preventDefault();
+    console.log('=============== INSIDE handleClickDELETE ====>');
+    console.log(this.props.indexman);
+    this.props.deleteTask(this.props.indexman);
+    // console.log('Key=========> ' + this.props.index);
+    // console.log('Button Delete Clicked');
+  };
+
   render() {
     return (
       <form>
@@ -187,6 +211,8 @@ class EditTaskForm extends Component {
                 <Button cancel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickCancel}>
                   Cancel
                 </Button>
+
+                <ButtonDel onClick={this.handleClickDelete}>Delete Task</ButtonDel>
               </Column3>
             </FlexContainerColumn>
 
