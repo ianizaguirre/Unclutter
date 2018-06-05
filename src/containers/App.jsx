@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import '../css/App.css';
-
 import base from '../base';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
+import styled from 'styled-components';
+// import '../css/App.css';
+
 import Header from '../components/Header';
 
 import AddTaskForm from '../components/AddTaskForm';
 
 import EditTaskForm from '../components/EditTaskForm';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 // =============================================================================
 
@@ -30,16 +31,16 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'grey',
+  background: isDragging ? 'lightgreen' : 'white',
 
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
-  padding: grid,
-  width: 250
+  // background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  // width: 250,
+  padding: grid
 });
 
 // ============================================================================
@@ -198,8 +199,7 @@ class App extends Component {
                               {...provided.dragHandleProps}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              Yo-Index: {index} ............. Yo-ID: {item.id} ............. CONTENT: {item.content}............
-                              Created: {item.created}................ EditTaskForm:
+                              Yo-Index: {index} ............. Yo-ID: {item.id}
                               <EditTaskForm
                                 taskKeysValue={this.state.holdTasks[index]}
                                 indexman={index}
@@ -222,19 +222,6 @@ class App extends Component {
                   )}
                 </Droppable>
               </DragDropContext>
-
-              <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-
-              <h1> Test 2 with Array </h1>
-
-              {this.state.holdTasks.map((item, index) => (
-                <div key={item.id}>
-                  Hi {item.id}
-                  ..............CONTENT: {item.content}
-                </div>
-              ))}
-
-              <p>==============================================</p>
 
               <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
             </Gutter>

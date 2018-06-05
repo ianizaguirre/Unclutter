@@ -90,6 +90,7 @@ const ButtonDel = styled.button`
   padding: 8px 16px;
   cursor: pointer;
   transition: all 0.25s ease;
+  display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 
   &:hover {
     color: #ffffff;
@@ -212,7 +213,9 @@ class EditTaskForm extends Component {
                   Cancel
                 </Button>
 
-                <ButtonDel onClick={this.handleClickDelete}>Delete Task</ButtonDel>
+                <ButtonDel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickDelete}>
+                  🗑
+                </ButtonDel>
               </Column3>
             </FlexContainerColumn>
 
