@@ -51,6 +51,7 @@ const Wrapper = styled.div`
 const Title = styled.h3`
   font-weight: 300;
   font-size: 21px;
+  margin-top: 3.5rem;
 `;
 
 const FlexContainer = styled.div`
@@ -60,11 +61,24 @@ const FlexContainer = styled.div`
 const Column = styled.div`
   width: 33.3%;
   min-height: 100vh;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    width: ${props => (props.primary ? '50%' : '15%')};
+  }
+
+  @media (max-width: 750px) {
+    width: ${props => (props.primary ? '100%' : '0')};
+  }
 `;
 const MiddleColumn = Column.extend`
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #f0f0f0;
   background-color: #ffffff;
+
+  /* @media (max-width: 700px) {
+    width: 100%;
+  } */
 `;
 const Gutter = styled.div`
   width: 90%;
@@ -135,16 +149,16 @@ class App extends Component {
   };
 
   handleUpdateTask = (key, updatedThisTask) => {
-    console.log('=========> handleUpdateTask === App.js ===> KEY');
-    console.log(key);
-    console.log('-----------------------------------');
-    console.log('=========> handleUpdateTask === App.js ===> updatedThisTask');
-    console.log(updatedThisTask);
-    console.log('-----------------------------------');
+    // console.log('=========> handleUpdateTask === App.js ===> KEY');
+    // console.log(key);
+    // console.log('-----------------------------------');
+    // console.log('=========> handleUpdateTask === App.js ===> updatedThisTask');
+    // console.log(updatedThisTask);
+    // console.log('-----------------------------------');
     // 1. Take a copy of the current state (task)
     const holdTasks = [...this.state.holdTasks];
-    console.log('=========> handleUpdateTask === App.js ===> holdTasks');
-    console.log(holdTasks);
+    // console.log('=========> handleUpdateTask === App.js ===> holdTasks');
+    // console.log(holdTasks);
     // 2. Update that state
     holdTasks[key] = updatedThisTask;
     // 3. Set that to state
@@ -187,8 +201,9 @@ class App extends Component {
         <Header />
 
         <FlexContainer>
-          <Column>Column1</Column>
-          <MiddleColumn>
+          <Column />
+
+          <MiddleColumn primary>
             <Gutter>
               <Title>Today</Title>
 
@@ -231,7 +246,8 @@ class App extends Component {
               <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
             </Gutter>
           </MiddleColumn>
-          <Column>Column3</Column>
+
+          <Column />
         </FlexContainer>
       </Wrapper>
     );

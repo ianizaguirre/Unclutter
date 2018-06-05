@@ -133,7 +133,7 @@ const ButtonDel = styled.button`
 class EditTaskForm extends Component {
   handleChange = event => {
     event.preventDefault();
-    console.log('Change in Input Detected');
+    // console.log('Change in Input Detected');
     // update that Task
     // 1. Take a copy of the current task
     const updatedThisTask = {
@@ -158,7 +158,7 @@ class EditTaskForm extends Component {
     event.preventDefault();
 
     this.props.updateCurrentItem(this.props.indexman);
-    console.log('Yooo is this the index inside of handleFocus()');
+    // console.log('Yooo is this the index inside of handleFocus()');
     // console.log(this.props.indexman);
 
     //  ------------------
@@ -192,7 +192,7 @@ class EditTaskForm extends Component {
 
     // Send back upstream
     this.props.updateTask(this.props.indexman, this.props.sendRevertedTask);
-    console.log('Clicked Cancel ===========xoxoxo========>');
+    // console.log('Clicked Cancel ===========xoxoxo========>');
     // console.log(revertThisTask);
   };
 

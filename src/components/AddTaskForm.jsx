@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
-const Title = styled.h3`
-  color: #4c4c4c;
-`;
+// const Title = styled.h3`
+//   color: #4c4c4c;
+// `;
 const Input = styled.input`
   color: #4c4c4c;
+  width: 100%;
   background-color: #ffffff;
   font-size: 14px;
   height: 40px;
@@ -57,8 +58,6 @@ class AddTaskForm extends Component {
   render() {
     return (
       <Fragment>
-        <Title>Add Task Form:</Title>
-
         <form autoComplete="off" onSubmit={this.addToDoEntry}>
           <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
 
