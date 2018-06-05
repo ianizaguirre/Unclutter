@@ -199,7 +199,6 @@ class App extends Component {
                               {...provided.dragHandleProps}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              Yo-Index: {index} ............. Yo-ID: {item.id}
                               <EditTaskForm
                                 taskKeysValue={this.state.holdTasks[index]}
                                 indexman={index}

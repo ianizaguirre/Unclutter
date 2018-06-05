@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
 import styled from 'styled-components';
+
+import ToggleMenu from './ToggleMenu';
 
 const ListItemsWrapper = styled.li`
   list-style: none;
@@ -192,7 +193,7 @@ class EditTaskForm extends Component {
 
   render() {
     return (
-      <form>
+      <form autoComplete="off">
         <ListItemsWrapper>
           <FlexContainerWrapper>
             <FlexContainerColumn>
@@ -212,10 +213,10 @@ class EditTaskForm extends Component {
                 <Button cancel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickCancel}>
                   Cancel
                 </Button>
-
                 <ButtonDel buttonIsVisible={this.props.isAvailable} onClick={this.handleClickDelete}>
                   🗑
                 </ButtonDel>
+                =====>> <ToggleMenu isAvailable={this.props.isAvailable}> MENU </ToggleMenu>
               </Column3>
             </FlexContainerColumn>
 

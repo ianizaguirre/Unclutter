@@ -59,7 +59,7 @@ class AddTaskForm extends Component {
       <Fragment>
         <Title>Add Task Form:</Title>
 
-        <form onSubmit={this.addToDoEntry}>
+        <form autoComplete="off" onSubmit={this.addToDoEntry}>
           <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
 
           <Button type="submit"> Add Task → </Button>
