@@ -60,36 +60,7 @@ const Input = styled.input`
   font-size: 14px;
   color: #535a5b;
 `;
-// const Button = styled.button`
-//   color: #e44232;
-//   background-color: #ffffff;
-//   border-color: #e44232;
-//   font-size: 13px;
-//   line-height: 15px;
-//   font-weight: 500;
-//   border: 2px solid;
-//   border-radius: 4px;
-//   padding: 8px 16px;
-//   cursor: pointer;
-//   transition: all 0.25s ease;
 
-//   &:hover {
-//     color: #ffffff;
-//     background-color: #e44232;
-//     outline: 0;
-//     border-color: transparent;
-//   }
-// `;
-
-// onBlur={() =>
-//   console.log(
-//     this.props.currentItem +
-//       '=' +
-//       this.props.index +
-//       '....buttonIsVisible=isAvailable= ' +
-//       this.props.isAvailable
-//   )
-// }
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
   color: ${props => (props.cancel ? '#7d8485' : '#ffffff')};
@@ -106,7 +77,6 @@ const Button = styled.button`
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 `;
-//visibility: ${props => (props.buttonIsVisible ? 'visible' : 'hidden')};
 
 // ================================================
 // console.log(event.currentTarget); // ==> returns => whole <input... tag
@@ -125,6 +95,11 @@ const Button = styled.button`
 // ================================================
 
 class EditTaskForm extends Component {
+  state = {
+    // currentItem: '',
+    // holdRevertedTask: ''
+  };
+
   handleChange = event => {
     event.preventDefault();
     console.log('Change in Input Detected');
@@ -135,20 +110,40 @@ class EditTaskForm extends Component {
       [event.currentTarget.name]: event.currentTarget.value
     }; // END OF OBJECT stored in variable
 
+    console.log('this.props.taskKeysValue');
+    console.log(this.props.taskKeysValue);
+    console.log('=======');
+    console.log('updatedThisTask');
+    console.log(updatedThisTask);
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXX');
+    console.log('this.props.indexman');
+    console.log(this.props.indexman);
+
     // 2. When change is done then send it back upstream
-    this.props.updateTask(this.props.index, updatedThisTask);
+    this.props.updateTask(this.props.indexman, updatedThisTask);
   };
 
   handleFocus = event => {
     event.preventDefault();
 
-    this.props.updateCurrentItem(this.props.index);
+    this.props.updateCurrentItem(this.props.indexman);
+    console.log('Yooo is this the index inside of handleFocus()');
+    console.log(this.props.indexman);
 
     //  ------------------
     const taskBeforeEdits = {
       ...this.props.taskKeysValue,
       [event.currentTarget.name]: event.currentTarget.value
     };
+
+    console.log('Inside of handleFocus() ====> event.currentTarget.name');
+    console.log(event.currentTarget.name);
+
+    console.log('Inside of handleFocus() ====> event.currentTarget.value');
+    console.log(event.currentTarget.value);
+
+    console.log('Inside of handleFocus() ====> taskBeforeEdits');
+    console.log(taskBeforeEdits);
 
     this.props.holdRevertedTask(taskBeforeEdits);
   };
@@ -165,7 +160,7 @@ class EditTaskForm extends Component {
     //  ------------------
 
     // Send back upstream
-    this.props.updateTask(this.props.index, this.props.sendRevertedTask);
+    this.props.updateTask(this.props.indexman, this.props.sendRevertedTask);
     console.log('Clicked Cancel ===========xoxoxo========>');
     // console.log(revertThisTask);
   };
@@ -182,7 +177,7 @@ class EditTaskForm extends Component {
                   name="content"
                   onChange={this.handleChange}
                   onFocus={this.handleFocus}
-                  value={this.props.taskKeysValue.content}
+                  value={this.props.value}
                 />
               </Column1>
               <Column3>
@@ -197,7 +192,7 @@ class EditTaskForm extends Component {
 
             <FlexContainerRow>
               <Column2>
-                <p> {this.props.taskKeysValue.created} </p>
+                <p> {this.props.creation} </p>
               </Column2>
             </FlexContainerRow>
           </FlexContainerWrapper>

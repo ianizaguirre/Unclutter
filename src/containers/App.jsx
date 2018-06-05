@@ -8,8 +8,7 @@ import ToDoList from '../components/ToDoList';
 
 import AddTaskForm from '../components/AddTaskForm';
 
-import Inventory from './Inventory';
-
+import EditTaskForm from '../components/EditTaskForm';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 // =============================================================================
@@ -78,7 +77,9 @@ const Gutter = styled.div`
 class App extends Component {
   state = {
     tasks: {},
-    holdTasks: []
+    holdTasks: [],
+    currentItem: '',
+    holdRevertedTask: ''
   };
 
   componentDidMount() {
@@ -145,8 +146,16 @@ class App extends Component {
     // // 3. Set that to state
     // this.setState({ tasks });
     // =============================================
+    console.log('=========> handleUpdateTask === App.js ===> KEY');
+    console.log(key);
+    console.log('-----------------------------------');
+    console.log('=========> handleUpdateTask === App.js ===> updatedThisTask');
+    console.log(updatedThisTask);
+    console.log('-----------------------------------');
     // 1. Take a copy of the current state (task)
     const holdTasks = [...this.state.holdTasks];
+    console.log('=========> handleUpdateTask === App.js ===> holdTasks');
+    console.log(holdTasks);
     // 2. Update that state
     holdTasks[key] = updatedThisTask;
     // 3. Set that to state
@@ -169,6 +178,21 @@ class App extends Component {
     });
   };
 
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  handleUpdateCurrentItem = index => {
+    this.setState({
+      currentItem: index
+    });
+  };
+  handleHoldRevertedTask = revertFunk => {
+    this.setState({
+      holdRevertedTask: revertFunk
+    });
+  };
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+
   render() {
     return (
       <Wrapper>
@@ -182,6 +206,8 @@ class App extends Component {
               <ToDoList tasks={this.state.tasks} deleteTask={this.handleDeleteTask} />
 
               <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+              <h1> Test with Inventory </h1>
+              <p>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>></p>
 
               <DragDropContext onDragEnd={this.handleDragEnd}>
                 <Droppable droppableId="droppable">
@@ -196,7 +222,20 @@ class App extends Component {
                               {...provided.dragHandleProps}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              Hi {item.id} ............. CONTENT: {item.content}
+                              Yo-Index: {index} ............. Yo-ID: {item.id} ............. CONTENT: {item.content}............
+                              Created: {item.created}................ EditTaskForm:
+                              <EditTaskForm
+                                taskKeysValue={this.state.holdTasks[index]}
+                                indexman={index}
+                                tasks={this.state.holdTasks}
+                                updateTask={this.handleUpdateTask}
+                                holdRevertedTask={this.handleHoldRevertedTask}
+                                sendRevertedTask={this.state.holdRevertedTask}
+                                updateCurrentItem={this.handleUpdateCurrentItem}
+                                isAvailable={this.state.currentItem === index}
+                                value={item.content}
+                                creation={item.created}
+                              />
                             </div>
                           )}
                         </Draggable>
@@ -220,10 +259,9 @@ class App extends Component {
 
               <p>==============================================</p>
 
-              <Inventory tasks={this.state.holdTasks} updateTask={this.handleUpdateTask} />
-
+              <p>---------------------------------------------------</p>
               <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
-              <p>===============--------------=============================</p>
+              <p>---------------------------------------------------</p>
             </Gutter>
           </MiddleColumn>
           <Column>Column3</Column>
