@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
 
+/* @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700'); */
 
 .Header-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
+.logo-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.logo-link:hover {
+  color: #4CCFF9;
+}
 
-
+/* color: #36B215 */
 
 @keyframes App-logo-spin {
   from {

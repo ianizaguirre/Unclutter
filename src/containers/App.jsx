@@ -38,7 +38,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 });
 
 const getListStyle = isDraggingOver => ({
-  // background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? 'lightblue' : 'white',
   // width: 250,
   padding: grid
 });
@@ -49,9 +49,10 @@ const Wrapper = styled.div`
   background-color: #fafafa;
 `;
 const Title = styled.h3`
-  font-weight: 300;
   font-size: 21px;
   margin-top: 3.5rem;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
 
   @media (max-width: 750px) {
     text-align: center;

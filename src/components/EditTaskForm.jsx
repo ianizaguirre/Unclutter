@@ -56,6 +56,8 @@ const Column2 = Column1.extend`
   font-size: 13px;
   color: #535a5b;
   flex: none;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
 
   &:after {
     content: '';
@@ -86,6 +88,8 @@ const Input = styled.input`
   overflow: hidden;
   padding: 0.5rem 0.75rem;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
 
   @media (max-width: 750px) {
     font-size: 16px;
@@ -98,13 +102,15 @@ const Button = styled.button`
   background-color: ${props => (props.cancel ? '#ffffff' : '#359010')};
   font-size: 13px;
   line-height: 20px;
-  font-weight: ${props => (props.cancel ? '400' : '500')};
   border: ${props => (props.cancel ? '2px solid transparent' : '2px solid')};
   border-radius: 4px;
   cursor: pointer;
 
   margin-right: 0.5em;
   padding: 0.25em 0.7em;
+
+  font-weight: ${props => (props.cancel ? '400' : '600')};
+  font-family: 'Open Sans', sans-serif;
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 
@@ -122,11 +128,12 @@ const ButtonDel = styled.button`
   line-height: 15px;
   margin: 0 auto;
   width: 100%;
-  font-weight: 400;
   padding: 8px 0px;
   cursor: pointer;
   transition: all 0.25s ease;
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
 
   &:hover {
     color: #333;

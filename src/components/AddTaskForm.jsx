@@ -15,6 +15,8 @@ const Input = styled.input`
   padding: 4px 16px;
   transition: background-color linear 0.2s, border-color linear 0.2s, box-shadow linear 0.2s,
     -webkit-box-shadow linear 0.2s;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
 
   @media (max-width: 750px) {
     font-size: 16px;
@@ -25,11 +27,17 @@ const Button = styled.button`
   background-color: #359010;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 500;
+  font-weight: 600;
   border: 2px solid;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.25s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 // getDate = () => {
 //   let today = new Date();
