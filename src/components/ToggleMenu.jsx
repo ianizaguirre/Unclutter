@@ -3,53 +3,6 @@ import styled from 'styled-components';
 
 import ellipsis from '../ellipsis-icon.png';
 
-// const ListItemsWrapper = styled.li`
-//   list-style: none;
-//   border-color: #e1e1e1;
-//   border-top-style: solid;
-//   border-bottom-style: solid;
-//   border-width: 1px;
-//   padding-top: 11px;
-//   padding-bottom: 11px;
-//   margin-bottom: 15px;
-// `;
-// const FlexContainerWrapper = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
-// const FlexContainerColumn = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   flex-direction: column;
-// `;
-// const FlexContainerRow = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   flex-direction: row;
-// `;
-
-// const Button = styled.button`
-//   /* Adapt the colours based on primary prop */
-//   color: ${props => (props.cancel ? '#7d8485' : '#ffffff')};
-//   background-color: ${props => (props.cancel ? '#ffffff' : '#359010')};
-//   font-size: 13px;
-//   line-height: 20px;
-//   font-weight: ${props => (props.cancel ? '400' : '500')};
-//   border: ${props => (props.cancel ? '2px solid transparent' : '2px solid')};
-//   border-radius: 4px;
-//   cursor: pointer;
-
-//   margin-right: 0.5em;
-//   padding: 0.25em 0.7em;
-
-//   /* display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')}; */
-// `;
-
 //==============================
 const MenuIconWrap = styled.div`
 
@@ -88,7 +41,7 @@ const MenuContents = styled.div`
     /* margin-left: auto;
     margin-top: auto;
     position: relative; */
-    margin-top: ${props => (props.toolBoxOpen ? '-73px' : '-42px')};
+    margin-top: ${props => (props.toolBoxOpen ? '-73px' : '-43px')};
     margin-left: -17px;
     /* top: 218px; */
     width: 85px;

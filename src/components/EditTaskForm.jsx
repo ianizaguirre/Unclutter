@@ -85,6 +85,10 @@ const Input = styled.input`
   overflow: hidden;
   padding: 0.5rem 0.75rem;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
 `;
 
 const Button = styled.button`
