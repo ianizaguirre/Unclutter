@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 import ToggleMenu from './ToggleMenu';
 
-const ListItemsWrapper = styled.li`
+// const ListItemsWrapper = styled.li`
+const ListItemsWrapper = styled.div`
   list-style: none;
-  border-color: #e1e1e1;
+  /* border-color: #e1e1e1;
   border-top-style: solid;
   border-bottom-style: solid;
   border-width: 1px;
   padding-top: 11px;
   padding-bottom: 11px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; */
 `;
 const FlexContainerWrapper = styled.div`
   display: flex;
@@ -120,6 +121,11 @@ const Button = styled.button`
   }
 `;
 //=========================
+const FlexContainerWrapperToggleMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const ButtonDel = styled.button`
   color: #333;
   background-color: transparent;
@@ -146,10 +152,17 @@ const ButtonDel = styled.button`
 
   } */
 `;
-const FlexContainerWrapperTEST = styled.div`
-  display: flex;
-  flex-direction: column;
+
+const TaskNumber = styled.div`
+  font-size: 15px;
+  color: #bebdbe;
+
+  position: absolute;
+
+  margin-left: -16px;
+  margin-top: -8px;
 `;
+
 // ================================================
 // console.log(event.currentTarget); // ==> returns => whole <input... tag
 // =======================
@@ -245,6 +258,7 @@ class EditTaskForm extends Component {
     return (
       <form autoComplete="off">
         <ListItemsWrapper>
+          <TaskNumber>{this.props.indexman}</TaskNumber>
           <FlexContainerWrapper>
             <FlexContainerColumn>
               <Column1 primary>
@@ -265,19 +279,18 @@ class EditTaskForm extends Component {
                 </Button>
               </Column3>
             </FlexContainerColumn>
-
             <FlexContainerRow>
               <Column2>
                 <p> {this.props.creation} </p>
               </Column2>
               <Column2Ellipise>
-                <FlexContainerWrapperTEST>
+                <FlexContainerWrapperToggleMenu>
                   <ToggleMenu isAvailable={this.props.isAvailable}>
                     <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
                       Delete task
                     </ButtonDel>
                   </ToggleMenu>
-                </FlexContainerWrapperTEST>
+                </FlexContainerWrapperToggleMenu>
               </Column2Ellipise>
             </FlexContainerRow>
           </FlexContainerWrapper>

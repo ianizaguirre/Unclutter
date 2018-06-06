@@ -1,9 +1,19 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 // const Title = styled.h3`
 //   color: #4c4c4c;
 // `;
+
+const FormWrapper = styled.div`
+  border-color: #e1e1e1;
+  border-top-style: solid;
+  border-width: 1px;
+  /* padding-top: 11px;
+  padding-bottom: 11px;
+  margin-bottom: 15px; */
+`;
+
 const Input = styled.input`
   color: #4c4c4c;
   width: 100%;
@@ -18,6 +28,8 @@ const Input = styled.input`
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
 
+  margin-top: 1rem;
+
   @media (max-width: 750px) {
     font-size: 16px;
   }
@@ -27,11 +39,11 @@ const Button = styled.button`
   background-color: #359010;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 600;
   border: 2px solid;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
+  font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   transition: all 0.25s ease;
 
@@ -69,13 +81,13 @@ class AddTaskForm extends Component {
 
   render() {
     return (
-      <Fragment>
+      <FormWrapper>
         <form autoComplete="off" onSubmit={this.addToDoEntry}>
           <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
 
           <Button type="submit"> Add Task → </Button>
         </form>
-      </Fragment>
+      </FormWrapper>
     );
   }
 }

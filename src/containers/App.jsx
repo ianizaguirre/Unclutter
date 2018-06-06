@@ -22,16 +22,26 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
+// const grid = 8;
+const grid = 12;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
   padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+  margin: `0 0 2px 0`,
+  // margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
   background: isDragging ? 'lightgreen' : 'white',
+  // border: '3px solid red',
+  border: '#e1e1e1',
+  borderTopStyle: 'solid',
+  // borderBottomStyle: 'solid',
+  borderWidth: '1px',
+  // padding-top: 11px,
+  // paddingBottom: '11px',
+  // marginBottom: '25px',
 
   // styles we need to apply on draggables
   ...draggableStyle
@@ -51,6 +61,7 @@ const Wrapper = styled.div`
 const Title = styled.h3`
   font-size: 21px;
   margin-top: 3.5rem;
+  margin-bottom: 1rem;
   font-weight: 300;
   font-family: 'Open Sans', sans-serif;
 
@@ -90,6 +101,8 @@ const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
 `;
+// ============================================================================
+
 // ============================================================================
 
 class App extends Component {
