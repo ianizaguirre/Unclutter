@@ -27,20 +27,31 @@ const FlexContainerColumn = styled.div`
   align-items: center;
   flex-direction: column;
   width: 75%;
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 `;
 const FlexContainerRow = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
   flex-direction: row;
+
+  @media (max-width: 750px) {
+    width: 100%;
+    justify-content: flex-end;
+  }
 `;
 const Column1 = styled.div`
   margin-right: auto;
   flex: 1 0 50%;
-  width: ${props => (props.primary ? '100%' : 'inherit')};
+  width: ${props => (props.primary ? '100%' : 'auto')};
 `;
 
 const Column2 = Column1.extend`
+  /* Date */
+  margin-right: 0;
   font-size: 13px;
   color: #535a5b;
   flex: none;
@@ -55,8 +66,8 @@ const Column2 = Column1.extend`
   }
 `;
 
-const Column2Ellipise = Column1.extend`
-  flex: none;
+const Column2Ellipise = styled.div`
+  /* flex: auto; */
   padding-left: 10px;
 `;
 
@@ -113,6 +124,14 @@ const ButtonDel = styled.button`
     outline: 0;
     border-color: transparent;
   }
+
+  /* @media (max-width: 750px) {
+
+  } */
+`;
+const FlexContainerWrapperTEST = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 // ================================================
 // console.log(event.currentTarget); // ==> returns => whole <input... tag
@@ -235,11 +254,13 @@ class EditTaskForm extends Component {
                 <p> {this.props.creation} </p>
               </Column2>
               <Column2Ellipise>
-                <ToggleMenu isAvailable={true}>
-                  <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
-                    Delete task
-                  </ButtonDel>
-                </ToggleMenu>
+                <FlexContainerWrapperTEST>
+                  <ToggleMenu isAvailable={this.props.isAvailable}>
+                    <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
+                      Delete task
+                    </ButtonDel>
+                  </ToggleMenu>
+                </FlexContainerWrapperTEST>
               </Column2Ellipise>
             </FlexContainerRow>
           </FlexContainerWrapper>

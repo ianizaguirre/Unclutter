@@ -52,6 +52,10 @@ const Title = styled.h3`
   font-weight: 300;
   font-size: 21px;
   margin-top: 3.5rem;
+
+  @media (max-width: 750px) {
+    text-align: center;
+  }
 `;
 
 const FlexContainer = styled.div`

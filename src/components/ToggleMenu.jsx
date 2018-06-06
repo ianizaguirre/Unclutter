@@ -76,13 +76,23 @@ const MenuContents = styled.div`
   position: absolute;
   /* top: 36%; */
   /* left: 63%; */
-  margin-left: -17px;
+  /* margin-left: -17px; */
   margin-top: 27px;
   width: 112px;
 
   padding: 0.25em 0em;
 
   display: ${props => (props.isOpen ? 'none' : 'inline-block')};
+
+  @media (max-width: 750px) {
+    /* margin-left: auto;
+    margin-top: auto;
+    position: relative; */
+    margin-top: ${props => (props.toolBoxOpen ? '-73px' : '-42px')};
+    margin-left: -17px;
+    /* top: 218px; */
+    width: 85px;
+  }
 `;
 //=========================
 // ==========================
@@ -114,6 +124,7 @@ class ToggleMenu extends Component {
   handleToggleMenu = event => {
     event.preventDefault();
     // console.log('handleToggleMenu ===> has been CLICKED');
+    // console.log(this.props.isAvailable);
 
     const isOpen = !this.state.openMenu ? true : false;
     // console.log('THIS IS THE STATE OF =====> openMenu');
@@ -131,11 +142,13 @@ class ToggleMenu extends Component {
   render() {
     return (
       <Fragment>
-        <MenuIconWrap buttonIsVisible={this.props.isAvailable} onClick={this.handleToggleMenu}>
+        <MenuIconWrap buttonIsVisible={true} onClick={this.handleToggleMenu}>
           <EllipsisImg src={ellipsis} alt="" />
         </MenuIconWrap>
 
-        <MenuContents isOpen={this.state.openMenu}>{this.props.children}</MenuContents>
+        <MenuContents isOpen={this.state.openMenu} toolBoxOpen={this.props.isAvailable}>
+          {this.props.children}
+        </MenuContents>
       </Fragment>
     );
   }
