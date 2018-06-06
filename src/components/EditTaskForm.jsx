@@ -258,7 +258,7 @@ class EditTaskForm extends Component {
     return (
       <form autoComplete="off">
         <ListItemsWrapper>
-          <TaskNumber>{this.props.indexman}</TaskNumber>
+          <TaskNumber>{this.props.indexman + 1}</TaskNumber>
           <FlexContainerWrapper>
             <FlexContainerColumn>
               <Column1 primary>
