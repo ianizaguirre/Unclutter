@@ -39,6 +39,7 @@ const FlexContainerRow = styled.div`
   flex-direction: row;
 
   @media (max-width: 750px) {
+    margin-top: 4px;
     width: 100%;
     justify-content: flex-end;
   }
@@ -106,6 +107,11 @@ const Button = styled.button`
   padding: 0.25em 0.7em;
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
+
+  @media (max-width: 750px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
 `;
 //=========================
 const ButtonDel = styled.button`

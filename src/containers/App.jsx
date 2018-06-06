@@ -55,6 +55,7 @@ const Title = styled.h3`
 
   @media (max-width: 750px) {
     text-align: center;
+    font-size: 25px;
   }
 `;
 

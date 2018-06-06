@@ -15,6 +15,10 @@ const Input = styled.input`
   padding: 4px 16px;
   transition: background-color linear 0.2s, border-color linear 0.2s, box-shadow linear 0.2s,
     -webkit-box-shadow linear 0.2s;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
 `;
 const Button = styled.button`
   color: #ffffff;
