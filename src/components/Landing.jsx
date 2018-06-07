@@ -15,13 +15,13 @@ const Column = styled.div`
   min-height: 100vh;
   margin: 0 auto;
 
-  /* @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     width: ${props => (props.primary ? '50%' : '15%')};
   }
 
   @media (max-width: 750px) {
     width: ${props => (props.primary ? '100%' : '0')};
-  } */
+  }
 `;
 const MiddleColumn = Column.extend`
   border-left: 1px solid #f0f0f0;
