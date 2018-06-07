@@ -98,18 +98,23 @@ class Landing extends Component {
     return (
       <Fragment>
         <Header />
-
+        Test1
         <Wrapper>
+          Test2
           <FlexContainer>
+            Test3
             <Column />
+            Test4
             <MiddleColumn primary>
+              Test5
               <Gutter>
+                Test6
                 <form onSubmit={this.goToMainApp}>
+                  Test7
                   <Intro>
                     To enter this application, enter a unique session name below. This session name is how you can
                     return back to your same dashboard at a later time.
                   </Intro>
-
                   <Input
                     required
                     type="text"

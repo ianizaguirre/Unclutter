@@ -131,6 +131,11 @@ const DragIconImg = styled.img`
   transform: rotate(90deg);
   /* display: ${props => (props.isOpen ? 'none' : 'inline-block')}; */
   display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
+
+/* ALWAYS Show Drag Icon when viewing from phone */
+    @media (max-width: 750px) {
+    display: inline-block;
+  }
 `;
 
 // ================================================
