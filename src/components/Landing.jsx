@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const FlexContainer = styled.div`
-  display: flex;
+  /* display: flex; */
 `;
 
 const Column = styled.div`
