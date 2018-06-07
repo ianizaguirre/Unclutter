@@ -38,7 +38,8 @@ const Gutter = styled.div`
   font-family: 'Open Sans', sans-serif;
   margin-top: 3.5rem;
 `;
-// ============================================================================
+
+// =================================================================
 
 const Intro = styled.div`
   font-size: 16px;
@@ -102,13 +103,11 @@ class Landing extends Component {
     return (
       <Fragment>
         <Header />
-        Test1
+
         <Wrapper>
-          Test2
           <FlexContainer>
-            Test3
             <Column />
-            Test4
+
             <MiddleColumn primary>
               Test5
               <Gutter>
