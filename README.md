@@ -81,7 +81,7 @@ To demo this application, please click the following link:
 
 | Date | Version | Description |
 | --- | --- | ---
-| `May 30, 2018` | 1.00 | Initial release
+| `June 07, 2018` | 1.00 | Initial release
 
 
 
