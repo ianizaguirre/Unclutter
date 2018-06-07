@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-// const Title = styled.h3`
-//   color: #4c4c4c;
-// `;
-
 const FormWrapper = styled.div`
   border-color: #e1e1e1;
   border-top-style: solid;
   border-width: 1px;
-  /* padding-top: 11px;
+
   padding-bottom: 11px;
-  margin-bottom: 15px; */
 `;
 
 const Input = styled.input`

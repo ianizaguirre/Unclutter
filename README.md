@@ -14,8 +14,14 @@
 
 ## Features
 
-* Includes sign-up / sign-in / sign-out functionality, with encrypted passwords & an authorization flow -(Development In Progress)
+* Drag and Drop functionality
 * Full CRUD routes
+* Passing Dynamic data with props
+* Routing with React Router
+* Events & Refs
+* Persisting State with Firebase
+* Bi-directional Data Flow and Live State Editing
+* Styled-Components
 
 &nbsp;
 
@@ -52,7 +58,7 @@
 
 ## Application Map
 
-* Image Coming Soon
+![Unclutter-App-Map](/public/images/Unclutter-App-Map.png)
 
 &nbsp;
 

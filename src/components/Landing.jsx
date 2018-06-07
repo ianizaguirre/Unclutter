@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
-// import '../css/Landing.css';
 import Header from './Header';
+// import '../css/Landing.css';
 
 const Wrapper = styled.div`
   background-color: #fafafa;

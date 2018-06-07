@@ -33,7 +33,7 @@ const MenuContents = styled.div`
     /* margin-left: auto;
     margin-top: auto;
     position: relative; */
-    margin-top: ${props => (props.toolBoxOpen ? '-85px' : '-48px')};
+    margin-top: ${props => (props.toolBoxOpen ? '-86px' : '-49px')};
     margin-left: -17px;
     /* top: 218px; */
     width: 85px;
@@ -48,8 +48,6 @@ const EllipsisImg = styled.img`
 
   display: ${props => (props.isOpen ? 'none' : 'inline-block')};
 `;
-
-// ================================================
 
 class ToggleMenu extends Component {
   handleToggleMenu = event => {
