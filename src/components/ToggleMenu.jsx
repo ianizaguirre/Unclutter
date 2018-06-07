@@ -5,18 +5,10 @@ import ellipsis from '../ellipsis-icon.png';
 
 //==============================
 const MenuIconWrap = styled.div`
-
-  /* color: ${props => (props.cancel ? '#7d8485' : '#ffffff')}; */
-
   cursor: pointer;
-
-
-  /* margin-right: 0.5em;
-  padding: 0.25em 0.7em; */
-
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
 `;
-// ==========================
+
 const MenuContents = styled.div`
   color: #7d8485;
   background-color: #ffffff;
@@ -35,7 +27,7 @@ const MenuContents = styled.div`
 
   padding: 0.25em 0em;
 
-  display: ${props => (props.isOpen ? 'none' : 'inline-block')};
+  display: ${props => (props.isOpen ? 'inline-block' : 'none')};
 
   @media (max-width: 750px) {
     /* margin-left: auto;
@@ -47,7 +39,7 @@ const MenuContents = styled.div`
     width: 85px;
   }
 `;
-//=========================
+
 // ================================================
 const EllipsisImg = styled.img`
   position: relative;
@@ -60,27 +52,17 @@ const EllipsisImg = styled.img`
 // ================================================
 
 class ToggleMenu extends Component {
-  state = {
-    openMenu: true
-  };
-
   handleToggleMenu = event => {
     event.preventDefault();
-    // console.log('handleToggleMenu ===> has been CLICKED');
-    // console.log(this.props.isAvailable);
 
-    const isOpen = !this.state.openMenu ? true : false;
-    // console.log('THIS IS THE STATE OF =====> openMenu');
-    // console.log(this.state.openMenu);
+    let isOpen = this.props.openMenu ? false : true;
+    console.log('THIS IS THE STATE OF =====> openMenu 🍎');
 
-    this.setState({
-      openMenu: isOpen
-    });
+    this.props.toggleMenu(isOpen, this.props.indexman);
+
+    console.log('this.props.mouseOnTask ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
+    console.log(this.props.indexman);
   };
-
-  // {this.props.children}
-
-  // ==>  <ToggleMenu isAvailable={this.props.isAvailable} />
 
   render() {
     return (
@@ -89,7 +71,7 @@ class ToggleMenu extends Component {
           <EllipsisImg src={ellipsis} alt="" />
         </MenuIconWrap>
 
-        <MenuContents isOpen={this.state.openMenu} toolBoxOpen={this.props.isAvailable}>
+        <MenuContents isOpen={this.props.openMenu} toolBoxOpen={this.props.isAvailable}>
           {this.props.children}
         </MenuContents>
       </Fragment>

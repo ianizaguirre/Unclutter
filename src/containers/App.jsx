@@ -112,7 +112,9 @@ class App extends Component {
     currentItem: '',
     holdRevertedTask: '',
     currentHoveredItem: '',
-    mouseOnTask: ''
+    mouseOnTask: '',
+    openMenu: '',
+    currentToggledMenu: ''
   };
 
   componentDidMount() {
@@ -212,50 +214,52 @@ class App extends Component {
     });
   };
   //>>>>>>>>>>>>>>>>>>>>>>>>
-
-  handleHoverOn = event => {
-    event.preventDefault();
-
-    // console.log('handleHoverOn HIT!');
-
-    // const mouseOnTaskCheck = true;
-
-    // this.setState({
-    //   mouseOnTask: mouseOnTaskCheck
-    // });
-
-    // console.log(mouseOnTaskCheck);
+  handleMouseOnTask = mouseTaskCheck => {
+    this.setState({
+      mouseOnTask: mouseTaskCheck
+    });
   };
-  // =========================
-  handleHoverOff = event => {
-    event.preventDefault();
+  //>>>>>>>>>>>>>>>>>>>>>>>>
 
-    // console.log('handleHoverOff HIT!!');
+  handleToggleMenu = (isOpenStatus, index) => {
+    console.log('THIS IS THE STATE OF =====> isOpenStatus');
+    console.log(isOpenStatus);
 
-    // const mouseOnTaskCheck = false;
+    let isOpen = isOpenStatus ? index : null;
+    console.log('==============isOpen==============>>>>>>🏆🏆🏆🏆🏆🏆');
+    console.log(isOpen);
 
-    // this.setState({
-    //   mouseOnTask: mouseOnTaskCheck
-    // });
-
-    // // console.log('STATE of mouseOnTask ====>');
-    // console.log(mouseOnTaskCheck);
+    this.setState({
+      openMenu: isOpenStatus,
+      currentToggledMenu: isOpen
+    });
   };
-
-  // handleHover = event => {
-  //   event.preventDefault();
-  //   console.log('HANDLE HOVER INSIDE editTaskForm ===> Hit');
-  // };
 
   // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
-  handleCurrentHoveredItem = index => {
+  handleCurrentHoveredItem = (index, isMouseOnIndex) => {
+    console.log('=====isMouseOnIndex====AKA-openMenu======>>>>🏆🏆🏆🏆🏆🏆🌮');
+    console.log(isMouseOnIndex);
+
+    let result = isMouseOnIndex ? index : null;
+    console.log('==============RESULT=======> 👽👽👽👽👽👽👽👽');
+    console.log(result);
+
     console.log('========= handleCurrentHoveredItem');
     console.log(index);
     this.setState({
-      currentHoveredItem: index
+      currentHoveredItem: index,
+      currentToggledMenu: result
     });
   };
   // ======================
+  handleCurrentItemsToggledMenu = index => {
+    console.log('=========  handleCurrentItemsToggledMenu 💩💩💩💩💩💩💩');
+    console.log(index);
+    this.setState({
+      currentToggledMenu: index
+    });
+  };
+  // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
 
   render() {
     return (
@@ -296,9 +300,13 @@ class App extends Component {
                                 isAvailable={this.state.currentItem === index}
                                 value={item.content}
                                 creation={item.created}
-                                mouseOnTask={this.state.mouseOnTask === index}
                                 currentHoveredItem={this.handleCurrentHoveredItem}
                                 isMouseOnTask={this.state.currentHoveredItem === index}
+                                mouseOnTask={this.state.mouseOnTask}
+                                toggleMenu={this.handleToggleMenu}
+                                openMenu={this.state.currentToggledMenu === index}
+                                handleMouseOnTask={this.handleMouseOnTask}
+                                currentItemsToggledMenu={this.handleCurrentItemsToggledMenu}
                               />
                             </div>
                           )}

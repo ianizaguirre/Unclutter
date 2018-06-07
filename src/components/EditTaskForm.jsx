@@ -35,7 +35,7 @@ const ListItemsWrapper = styled.div`
 const FlexContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
+
   align-items: baseline;
   flex-direction: row;
   justify-content: space-between;
@@ -73,21 +73,8 @@ const Column2 = Column1.extend`
   /* Date */
   flex: none;
   margin-right: 0;
-  /* position: relative; */
-  /* font-size: 13px;
-  color: #535a5b; */
-  /* font-weight: 400;
-  font-family: 'Open Sans', sans-serif; */
-
-  /* &:after {
-    content: '';
-    position: absolute;
-    border-bottom: solid 1px #535a5b;
-    width: 40px;
-    padding-top: 5px;
-    height: auto;
-  } */
 `;
+
 const DateWrap = styled.div`
   /* Date */
   position: relative;
@@ -145,7 +132,7 @@ const DragIconImg = styled.img`
   /* display: ${props => (props.isOpen ? 'none' : 'inline-block')}; */
   display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
 `;
-// mouseOnTask;
+
 // ================================================
 
 const Button = styled.button`
@@ -317,38 +304,32 @@ class EditTaskForm extends Component {
     // console.log('Button Delete Clicked');
   };
 
-  // <DragIconImg src={dragicon} alt="" mouseOnTaskCheck={this.props.isAvailable} />
-
   handleHoverOn = event => {
     event.preventDefault();
-    console.log('handleHoverOn HIT----------------editTaskForm!');
 
-    this.props.currentHoveredItem(this.props.indexman);
+    this.props.currentHoveredItem(this.props.indexman, this.props.openMenu);
 
     const mouseOnTaskCheck = true;
-    this.setState({
-      mouseOnTask: mouseOnTaskCheck
-    });
 
-    // console.log(mouseOnTaskCheck);
+    this.props.handleMouseOnTask(mouseOnTaskCheck);
+
+    console.log('STATE of mouseOnTask === mouseOnTaskCheck ====> 🔥');
+    console.log(mouseOnTaskCheck);
   };
 
   handleHoverOff = event => {
     event.preventDefault();
 
-    console.log('handleHoverOff HIT!! ----------------editTaskForm!');
-    this.props.currentHoveredItem(false);
+    this.props.currentHoveredItem(false, this.props.openMenu);
 
     const mouseOnTaskCheck = false;
 
-    this.setState({
-      mouseOnTask: mouseOnTaskCheck
-    });
+    this.props.handleMouseOnTask(mouseOnTaskCheck);
 
-    // console.log('STATE of mouseOnTask ====>');
-    // console.log(mouseOnTaskCheck);
+    console.log('STATE of mouseOnTask ==== mouseOnTaskCheck ====> 🔥');
+    console.log(mouseOnTaskCheck);
   };
-  // onMouseEnter = { this.handleHoverOn } onMouseLeave = { this.handleHoverOff }
+
   render() {
     return (
       <Form
@@ -386,7 +367,14 @@ class EditTaskForm extends Component {
               </Column2>
               <Column2Ellipise>
                 <FlexContainerWrapperToggleMenu>
-                  <ToggleMenu isAvailable={this.props.isAvailable}>
+                  <ToggleMenu
+                    isAvailable={this.props.isAvailable}
+                    mouseOnTask={this.props.mouseOnTask}
+                    openMenu={this.props.openMenu}
+                    toggleMenu={this.props.toggleMenu}
+                    indexman={this.props.indexman}
+                    currentItemsToggledMenu={this.props.currentItemsToggledMenu}
+                  >
                     <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
                       Delete task
                     </ButtonDel>
