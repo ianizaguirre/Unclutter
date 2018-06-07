@@ -48,21 +48,11 @@ const MenuContents = styled.div`
   }
 `;
 //=========================
-// ==========================
+// ================================================
 const EllipsisImg = styled.img`
-  /* background-color: red; */
-   width: 2em;
-  /* font-size: 13px;
-  line-height: 20px;
-  font-weight: ${props => (props.cancel ? '400' : '500')};
-  border: ${props => (props.cancel ? '2px solid transparent' : '2px solid')};
-  border-radius: 4px; */
+  position: relative;
+  width: 2em;
   cursor: pointer;
-
-  /* position: absolute; */
-
-  /* margin-right: 0.5em;
-  padding: 0.25em 0.7em; */
 
   display: ${props => (props.isOpen ? 'none' : 'inline-block')};
 `;

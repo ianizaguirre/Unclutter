@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import dragicon from '../drag-icon.png';
 import ToggleMenu from './ToggleMenu';
 
-// const ListItemsWrapper = styled.li`
+const Form = styled.form`
+  /* background: red; */
+  position: relative;
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    /* background: blue;
+    opacity: 0.1; */
+    right: auto;
+    left: -10%;
+    top: ${props => (props.toolboxIsVisible ? '-28%' : '-51%')};
+    height: ${props => (props.toolboxIsVisible ? '113px' : '85px')};
+    width: 118%;
+  }
+
+  @media (max-width: 750px) {
+    &:before {
+      left: -10%;
+      top: ${props => (props.toolboxIsVisible ? '-18%' : '-23%')};
+      height: ${props => (props.toolboxIsVisible ? '155px' : '118px')};
+    }
+  }
+`;
+
 const ListItemsWrapper = styled.div`
   list-style: none;
-  /* border-color: #e1e1e1;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-width: 1px;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  margin-bottom: 15px; */
 `;
 const FlexContainerWrapper = styled.div`
   display: flex;
@@ -53,12 +71,30 @@ const Column1 = styled.div`
 
 const Column2 = Column1.extend`
   /* Date */
-  margin-right: 0;
-  font-size: 13px;
-  color: #535a5b;
   flex: none;
+  margin-right: 0;
+  /* position: relative; */
+  /* font-size: 13px;
+  color: #535a5b; */
+  /* font-weight: 400;
+  font-family: 'Open Sans', sans-serif; */
+
+  /* &:after {
+    content: '';
+    position: absolute;
+    border-bottom: solid 1px #535a5b;
+    width: 40px;
+    padding-top: 5px;
+    height: auto;
+  } */
+`;
+const DateWrap = styled.div`
+  /* Date */
+  position: relative;
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #535a5b;
 
   &:after {
     content: '';
@@ -81,6 +117,7 @@ const Column3 = Column1.extend`
 `;
 
 const Input = styled.input`
+  position: relative;
   font-size: 14px;
   color: #535a5b;
   min-width: 100%;
@@ -96,6 +133,20 @@ const Input = styled.input`
     font-size: 16px;
   }
 `;
+// ================================================
+const DragIconImg = styled.img`
+  width: 2em;
+  position: absolute;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: -27px;
+  opacity: 0.5;
+  transform: rotate(90deg);
+  /* display: ${props => (props.isOpen ? 'none' : 'inline-block')}; */
+  display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
+`;
+// mouseOnTask;
+// ================================================
 
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
@@ -106,6 +157,7 @@ const Button = styled.button`
   border: ${props => (props.cancel ? '2px solid transparent' : '2px solid')};
   border-radius: 4px;
   cursor: pointer;
+  position: relative;
 
   margin-right: 0.5em;
   padding: 0.25em 0.7em;
@@ -161,6 +213,10 @@ const TaskNumber = styled.div`
 
   margin-left: -16px;
   margin-top: -8px;
+
+  /* &:hover {
+    color:
+  } */
 `;
 
 // ================================================
@@ -182,6 +238,7 @@ const TaskNumber = styled.div`
 class EditTaskForm extends Component {
   handleChange = event => {
     event.preventDefault();
+    // console.log('On Change Hit');
     // console.log('Change in Input Detected');
     // update that Task
     // 1. Take a copy of the current task
@@ -205,6 +262,7 @@ class EditTaskForm extends Component {
 
   handleFocus = event => {
     event.preventDefault();
+    // console.log('OnFocus Hit');
 
     this.props.updateCurrentItem(this.props.indexman);
     // console.log('Yooo is this the index inside of handleFocus()');
@@ -227,6 +285,11 @@ class EditTaskForm extends Component {
 
     this.props.holdRevertedTask(taskBeforeEdits);
   };
+
+  // handleHover = event => {
+  //   event.preventDefault();
+  //   console.log('HANDLE HOVER INSIDE editTaskForm ===> Hit');
+  // };
 
   handleClickSave = event => {
     event.preventDefault();
@@ -254,12 +317,50 @@ class EditTaskForm extends Component {
     // console.log('Button Delete Clicked');
   };
 
+  // <DragIconImg src={dragicon} alt="" mouseOnTaskCheck={this.props.isAvailable} />
+
+  handleHoverOn = event => {
+    event.preventDefault();
+    console.log('handleHoverOn HIT----------------editTaskForm!');
+
+    this.props.currentHoveredItem(this.props.indexman);
+
+    const mouseOnTaskCheck = true;
+    this.setState({
+      mouseOnTask: mouseOnTaskCheck
+    });
+
+    // console.log(mouseOnTaskCheck);
+  };
+
+  handleHoverOff = event => {
+    event.preventDefault();
+
+    console.log('handleHoverOff HIT!! ----------------editTaskForm!');
+    this.props.currentHoveredItem(false);
+
+    const mouseOnTaskCheck = false;
+
+    this.setState({
+      mouseOnTask: mouseOnTaskCheck
+    });
+
+    // console.log('STATE of mouseOnTask ====>');
+    // console.log(mouseOnTaskCheck);
+  };
+  // onMouseEnter = { this.handleHoverOn } onMouseLeave = { this.handleHoverOff }
   render() {
     return (
-      <form autoComplete="off">
+      <Form
+        autoComplete="off"
+        onMouseEnter={this.handleHoverOn}
+        onMouseLeave={this.handleHoverOff}
+        toolboxIsVisible={this.props.isAvailable}
+      >
         <ListItemsWrapper>
           <TaskNumber>{this.props.indexman + 1}</TaskNumber>
           <FlexContainerWrapper>
+            <DragIconImg src={dragicon} alt="" mouseOnTaskCheck={this.props.isMouseOnTask} />
             <FlexContainerColumn>
               <Column1 primary>
                 <Input
@@ -281,7 +382,7 @@ class EditTaskForm extends Component {
             </FlexContainerColumn>
             <FlexContainerRow>
               <Column2>
-                <p> {this.props.creation} </p>
+                <DateWrap> {this.props.creation} </DateWrap>
               </Column2>
               <Column2Ellipise>
                 <FlexContainerWrapperToggleMenu>
@@ -295,7 +396,7 @@ class EditTaskForm extends Component {
             </FlexContainerRow>
           </FlexContainerWrapper>
         </ListItemsWrapper>
-      </form>
+      </Form>
     );
   }
 }

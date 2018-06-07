@@ -110,7 +110,9 @@ class App extends Component {
     tasks: {},
     holdTasks: [],
     currentItem: '',
-    holdRevertedTask: ''
+    holdRevertedTask: '',
+    currentHoveredItem: '',
+    mouseOnTask: ''
   };
 
   componentDidMount() {
@@ -202,16 +204,57 @@ class App extends Component {
     });
   };
   handleHoldRevertedTask = revertFunk => {
+    // console.log('========= handleHoldReveredTask');
+    // console.log(revertFunk);
+
     this.setState({
       holdRevertedTask: revertFunk
     });
   };
   //>>>>>>>>>>>>>>>>>>>>>>>>
-  // handleBodyClickDetection = event => {
+
+  handleHoverOn = event => {
+    event.preventDefault();
+
+    // console.log('handleHoverOn HIT!');
+
+    // const mouseOnTaskCheck = true;
+
+    // this.setState({
+    //   mouseOnTask: mouseOnTaskCheck
+    // });
+
+    // console.log(mouseOnTaskCheck);
+  };
+  // =========================
+  handleHoverOff = event => {
+    event.preventDefault();
+
+    // console.log('handleHoverOff HIT!!');
+
+    // const mouseOnTaskCheck = false;
+
+    // this.setState({
+    //   mouseOnTask: mouseOnTaskCheck
+    // });
+
+    // // console.log('STATE of mouseOnTask ====>');
+    // console.log(mouseOnTaskCheck);
+  };
+
+  // handleHover = event => {
   //   event.preventDefault();
-  //   console.log('Body Click Detected');
+  //   console.log('HANDLE HOVER INSIDE editTaskForm ===> Hit');
   // };
 
+  // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
+  handleCurrentHoveredItem = index => {
+    console.log('========= handleCurrentHoveredItem');
+    console.log(index);
+    this.setState({
+      currentHoveredItem: index
+    });
+  };
   // ======================
 
   render() {
@@ -237,6 +280,8 @@ class App extends Component {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
+                              onMouseEnter={this.handleHoverOn}
+                              onMouseLeave={this.handleHoverOff}
                               style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
                               <EditTaskForm
@@ -251,6 +296,9 @@ class App extends Component {
                                 isAvailable={this.state.currentItem === index}
                                 value={item.content}
                                 creation={item.created}
+                                mouseOnTask={this.state.mouseOnTask === index}
+                                currentHoveredItem={this.handleCurrentHoveredItem}
+                                isMouseOnTask={this.state.currentHoveredItem === index}
                               />
                             </div>
                           )}
