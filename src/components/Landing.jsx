@@ -23,16 +23,21 @@ const Column = styled.div`
 `;
 
 const MiddleColumn = Column.extend`
+  min-height: 100vh;
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #f0f0f0;
   background-color: #ffffff;
+
+  @media (max-width: 750px) {
+    min-height: 80vh;
+  }
 `;
 
 const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
-  margin-top: 3.5rem;
+  /* margin-top: 3.5rem; */
 `;
 
 // =================================================================
@@ -40,6 +45,8 @@ const Gutter = styled.div`
 const Intro = styled.div`
   font-size: 16px;
   line-height: 1.4;
+
+  padding-top: 3.5rem;
   margin-bottom: 3.5rem;
 
   @media (max-width: 750px) {
@@ -114,7 +121,7 @@ class Landing extends Component {
                   required
                   type="text"
                   innerRef={this.myInput}
-                  placeholder="Enter A Session Name"
+                  placeholder="Enter Session Name"
                   autocorrect="off"
                   autocapitalize="none"
                 />
