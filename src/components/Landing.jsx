@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
-import '../css/Landing.css';
+// import '../css/Landing.css';
 import Header from './Header';
 
 const Wrapper = styled.div`
   background-color: #fafafa;
 `;
+
 const FlexContainer = styled.div`
   display: flex;
 `;
+
 const Column = styled.div`
   width: 33.3%;
   min-height: 100vh;
@@ -23,15 +25,13 @@ const Column = styled.div`
     width: ${props => (props.primary ? '100%' : '0')};
   }
 `;
+
 const MiddleColumn = Column.extend`
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #f0f0f0;
   background-color: #ffffff;
-
-  /* @media (max-width: 700px) {
-    width: 100%;
-  } */
 `;
+
 const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -48,6 +48,10 @@ const Intro = styled.div`
   @media (max-width: 750px) {
     font-size: 16px;
   }
+`;
+
+const Form = styled.form`
+  padding-top: 1px;
 `;
 
 const Input = styled.input`
@@ -109,12 +113,11 @@ class Landing extends Component {
               Test5
               <Gutter>
                 Test6
-                <form onSubmit={this.goToMainApp}>
-                  Test7
-                  <Intro>
-                    To enter this application, enter a unique session name below. This session name is how you can
-                    return back to your same dashboard at a later time.
-                  </Intro>
+                <Intro>
+                  To enter this application, enter a unique session name below. This session name is how you can return
+                  back to your same dashboard at a later time.
+                </Intro>
+                <Form onSubmit={this.goToMainApp}>
                   <Input
                     required
                     type="text"
@@ -124,7 +127,7 @@ class Landing extends Component {
                     autocapitalize="none"
                   />
                   <Button type="submit"> Visit Application → </Button>
-                </form>
+                </Form>
               </Gutter>
             </MiddleColumn>
             <Column />
