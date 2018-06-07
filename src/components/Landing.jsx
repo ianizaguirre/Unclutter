@@ -9,21 +9,21 @@ const Wrapper = styled.div`
 `;
 
 const FlexContainer = styled.div`
-  /* display: flex; */
+  display: flex;
 `;
 
 const Column = styled.div`
   width: 33.3%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin: 0 auto;
 
-  /* @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     width: ${props => (props.primary ? '50%' : '15%')};
   }
 
   @media (max-width: 750px) {
     width: ${props => (props.primary ? '100%' : '0')};
-  } */
+  }
 `;
 
 const MiddleColumn = Column.extend`
@@ -109,9 +109,7 @@ class Landing extends Component {
             <Column />
 
             <MiddleColumn primary>
-              Test5
               <Gutter>
-                Test6
                 <Intro>
                   To enter this application, enter a unique session name below. This session name is how you can return
                   back to your same dashboard at a later time.
