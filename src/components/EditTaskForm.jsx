@@ -249,7 +249,6 @@ class EditTaskForm extends Component {
 
   handleFocus = event => {
     event.preventDefault();
-    // console.log('OnFocus Hit');
 
     this.props.updateCurrentItem(this.props.indexman);
     // console.log('Yooo is this the index inside of handleFocus()');
@@ -273,11 +272,6 @@ class EditTaskForm extends Component {
     this.props.holdRevertedTask(taskBeforeEdits);
   };
 
-  // handleHover = event => {
-  //   event.preventDefault();
-  //   console.log('HANDLE HOVER INSIDE editTaskForm ===> Hit');
-  // };
-
   handleClickSave = event => {
     event.preventDefault();
     this.props.updateCurrentItem(null);
@@ -300,8 +294,6 @@ class EditTaskForm extends Component {
     // console.log('=============== INSIDE handleClickDELETE ====>');
     // console.log(this.props.indexman);
     this.props.deleteTask(this.props.indexman);
-    // console.log('Key=========> ' + this.props.index);
-    // console.log('Button Delete Clicked');
   };
 
   handleHoverOn = event => {
@@ -313,8 +305,8 @@ class EditTaskForm extends Component {
 
     this.props.handleMouseOnTask(mouseOnTaskCheck);
 
-    console.log('STATE of mouseOnTask === mouseOnTaskCheck ====> 🔥');
-    console.log(mouseOnTaskCheck);
+    // console.log('STATE of mouseOnTask === mouseOnTaskCheck ====> 🔥');
+    // console.log(mouseOnTaskCheck);
   };
 
   handleHoverOff = event => {
@@ -326,8 +318,8 @@ class EditTaskForm extends Component {
 
     this.props.handleMouseOnTask(mouseOnTaskCheck);
 
-    console.log('STATE of mouseOnTask ==== mouseOnTaskCheck ====> 🔥');
-    console.log(mouseOnTaskCheck);
+    // console.log('STATE of mouseOnTask ==== mouseOnTaskCheck ====> 🔥');
+    // console.log(mouseOnTaskCheck);
   };
 
   render() {

@@ -222,12 +222,12 @@ class App extends Component {
   //>>>>>>>>>>>>>>>>>>>>>>>>
 
   handleToggleMenu = (isOpenStatus, index) => {
-    console.log('THIS IS THE STATE OF =====> isOpenStatus');
-    console.log(isOpenStatus);
+    // console.log('THIS IS THE STATE OF =====> isOpenStatus');
+    // console.log(isOpenStatus);
 
     let isOpen = isOpenStatus ? index : null;
-    console.log('==============isOpen==============>>>>>>🏆🏆🏆🏆🏆🏆');
-    console.log(isOpen);
+    // console.log('==============isOpen==============>>>>>>🏆🏆🏆🏆🏆🏆');
+    // console.log(isOpen);
 
     this.setState({
       openMenu: isOpenStatus,
@@ -237,15 +237,13 @@ class App extends Component {
 
   // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
   handleCurrentHoveredItem = (index, isMouseOnIndex) => {
-    console.log('=====isMouseOnIndex====AKA-openMenu======>>>>🏆🏆🏆🏆🏆🏆🌮');
-    console.log(isMouseOnIndex);
-
     let result = isMouseOnIndex ? index : null;
-    console.log('==============RESULT=======> 👽👽👽👽👽👽👽👽');
-    console.log(result);
+    // console.log('==============RESULT=======> 👽👽👽👽👽👽👽👽');
+    // console.log(isMouseOnIndex);
 
-    console.log('========= handleCurrentHoveredItem');
-    console.log(index);
+    // console.log('========= handleCurrentHoveredItem');
+    // console.log(index);
+
     this.setState({
       currentHoveredItem: index,
       currentToggledMenu: result
@@ -253,8 +251,8 @@ class App extends Component {
   };
   // ======================
   handleCurrentItemsToggledMenu = index => {
-    console.log('=========  handleCurrentItemsToggledMenu 💩💩💩💩💩💩💩');
-    console.log(index);
+    // console.log('=========  handleCurrentItemsToggledMenu 💩💩💩💩💩💩💩');
+    // console.log(index);
     this.setState({
       currentToggledMenu: index
     });

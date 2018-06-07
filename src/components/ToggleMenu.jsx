@@ -56,12 +56,12 @@ class ToggleMenu extends Component {
     event.preventDefault();
 
     let isOpen = this.props.openMenu ? false : true;
-    console.log('THIS IS THE STATE OF =====> openMenu 🍎');
+    // console.log('THIS IS THE STATE OF =====> openMenu 🍎');
 
     this.props.toggleMenu(isOpen, this.props.indexman);
 
-    console.log('this.props.mouseOnTask ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
-    console.log(this.props.indexman);
+    // console.log('this.props.mouseOnTask ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
+    // console.log(this.props.indexman);
   };
 
   render() {
