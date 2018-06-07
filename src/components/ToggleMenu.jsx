@@ -33,7 +33,7 @@ const MenuContents = styled.div`
     /* margin-left: auto;
     margin-top: auto;
     position: relative; */
-    margin-top: ${props => (props.toolBoxOpen ? '-86px' : '-49px')};
+    margin-top: ${props => (props.toolBoxOpen ? '-87px' : '-50px')};
     margin-left: -17px;
     /* top: 218px; */
     width: 85px;
