@@ -8,10 +8,6 @@ const Wrapper = styled.div`
   background-color: #fafafa;
 `;
 
-const FlexContainer = styled.div`
-  display: flex;
-`;
-
 const Column = styled.div`
   width: 33.3%;
   /* min-height: 100vh; */
@@ -105,30 +101,28 @@ class Landing extends Component {
         <Header />
 
         <Wrapper>
-          <FlexContainer>
-            <Column />
+          <Column />
 
-            <MiddleColumn primary>
-              <Gutter>
-                <Intro>
-                  To enter this application, enter a unique session name below. This session name is how you can return
-                  back to your same dashboard at a later time.
-                </Intro>
-                <Form onSubmit={this.goToMainApp}>
-                  <Input
-                    required
-                    type="text"
-                    innerRef={this.myInput}
-                    placeholder="Enter A Session Name"
-                    autocorrect="off"
-                    autocapitalize="none"
-                  />
-                  <Button type="submit"> Visit Application → </Button>
-                </Form>
-              </Gutter>
-            </MiddleColumn>
-            <Column />
-          </FlexContainer>
+          <MiddleColumn primary>
+            <Gutter>
+              <Intro>
+                To enter this application, enter a unique session name below. This session name is how you can return
+                back to your same dashboard at a later time.
+              </Intro>
+              <Form onSubmit={this.goToMainApp}>
+                <Input
+                  required
+                  type="text"
+                  innerRef={this.myInput}
+                  placeholder="Enter A Session Name"
+                  autocorrect="off"
+                  autocapitalize="none"
+                />
+                <Button type="submit"> Visit Application → </Button>
+              </Form>
+            </Gutter>
+          </MiddleColumn>
+          <Column />
         </Wrapper>
       </Fragment>
     );
