@@ -32,14 +32,15 @@ const Input = styled.input`
 const Button = styled.button`
   color: #ffffff;
   background-color: #359010;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
-  border: 2px solid;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 0.375rem 0.75rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
   transition: all 0.25s ease;
 
   &:hover {

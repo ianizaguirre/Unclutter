@@ -58,18 +58,6 @@ const getListStyle = isDraggingOver => ({
 const Wrapper = styled.div`
   background-color: #fafafa;
 `;
-const Title = styled.h3`
-  font-size: 21px;
-  margin-top: 3.5rem;
-  margin-bottom: 1rem;
-  font-weight: 300;
-  font-family: 'Open Sans', sans-serif;
-
-  @media (max-width: 750px) {
-    text-align: center;
-    font-size: 25px;
-  }
-`;
 
 const FlexContainer = styled.div`
   display: flex;
@@ -100,6 +88,30 @@ const MiddleColumn = Column.extend`
 const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
+`;
+
+const Title = styled.h3`
+  font-size: 21px;
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Open Sans', sans-serif;
+
+  padding-left: 12px;
+  font-weight: 400;
+  letter-spacing: -1px;
+
+  @media (max-width: 750px) {
+    text-align: center;
+    font-size: 25px;
+  }
+`;
+
+const TodaysDate = styled.span`
+  padding-left: 3px;
+  color: #b1b1b1;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
 `;
 // ============================================================================
 
@@ -259,7 +271,14 @@ class App extends Component {
   };
   // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  //================================
+
   render() {
+    const todaysDate = new Date()
+      .toString()
+      .split(' ')
+      .splice(0, 3) // .splice(1, 3) for Year
+      .join(' ');
     return (
       <Wrapper>
         <Header />
@@ -269,7 +288,9 @@ class App extends Component {
 
           <MiddleColumn primary>
             <Gutter>
-              <Title>Today</Title>
+              <Title>
+                Today <TodaysDate> {todaysDate} </TodaysDate>{' '}
+              </Title>
 
               <DragDropContext onDragEnd={this.handleDragEnd}>
                 <Droppable droppableId="droppable">

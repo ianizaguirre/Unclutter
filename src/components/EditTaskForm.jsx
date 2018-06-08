@@ -67,6 +67,12 @@ const Column1 = styled.div`
   margin-right: auto;
   flex: 1 0 50%;
   width: ${props => (props.primary ? '100%' : 'auto')};
+
+  padding-right: 10px;
+
+  @media (max-width: 750px) {
+    padding-right: 0;
+  }
 `;
 
 const Column2 = Column1.extend`
@@ -122,19 +128,20 @@ const Input = styled.input`
 `;
 // ================================================
 const DragIconImg = styled.img`
-  width: 2em;
+  /* width: 2em; */
+  width: 15px;
   position: absolute;
   cursor: pointer;
-  margin-top: 5px;
-  margin-left: -27px;
+  margin-top: 13px;
+  margin-left: -19px;
   opacity: 0.5;
-  transform: rotate(90deg);
-  /* display: ${props => (props.isOpen ? 'none' : 'inline-block')}; */
+  /* transform: rotate(90deg); */
   display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
+  /* display: 'inline-block'; */
 
-/* ALWAYS Show Drag Icon when viewing from phone */
-    @media (max-width: 750px) {
-    display: inline-block;
+  /* ALWAYS Show Drag Icon when viewing from phone */
+  @media (max-width: 750px) {
+    display: none;
   }
 `;
 
@@ -144,20 +151,26 @@ const Button = styled.button`
   /* Adapt the colours based on primary prop */
   color: ${props => (props.cancel ? '#7d8485' : '#ffffff')};
   background-color: ${props => (props.cancel ? '#ffffff' : '#359010')};
-  font-size: 13px;
+  font-size: 12px;
   line-height: 20px;
-  border: ${props => (props.cancel ? '2px solid transparent' : '2px solid')};
-  border-radius: 4px;
+  border: ${props => (props.cancel ? '1px solid transparent' : '1px solid')};
+  border-radius: 3px;
   cursor: pointer;
   position: relative;
+  letter-spacing: 1px;
 
   margin-right: 0.5em;
-  padding: 0.25em 0.7em;
+  padding: 0.375rem 0.75rem;
 
-  font-weight: ${props => (props.cancel ? '400' : '600')};
+  font-weight: ${props => (props.cancel ? '500' : '500')};
   font-family: 'Open Sans', sans-serif;
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
+
+  &:hover {
+    opacity: ${props => (props.cancel ? '1' : '0.8')};
+    text-decoration: ${props => (props.cancel ? 'underline' : 'none')};
+  }
 
   @media (max-width: 750px) {
     font-size: 14px;
