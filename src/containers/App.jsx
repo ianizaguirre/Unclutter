@@ -81,6 +81,9 @@ const MiddleColumn = Column.extend`
   border-right: 1px solid #f0f0f0;
   background-color: #ffffff;
 
+  /* When Page is Full of Tasks give space under Add Task */
+  padding-bottom: 3rem;
+
   /* @media (max-width: 700px) {
     width: 100%;
   } */
@@ -127,7 +130,8 @@ class App extends Component {
     currentHoveredItem: '',
     mouseOnTask: '',
     openMenu: '',
-    currentToggledMenu: ''
+    currentToggledMenu: '',
+    addTaskFormIsAvailable: ''
   };
 
   componentDidMount() {
@@ -223,7 +227,8 @@ class App extends Component {
     // console.log(revertFunk);
 
     this.setState({
-      holdRevertedTask: revertFunk
+      holdRevertedTask: revertFunk,
+      addTaskFormIsAvailable: false
     });
   };
   //>>>>>>>>>>>>>>>>>>>>>>>>
@@ -271,6 +276,21 @@ class App extends Component {
     });
   };
   // ==========>>>>>>>>>>>>>>>>>>>>>>>>>
+  handleAddTaskToggle = event => {
+    event.preventDefault();
+
+    // Close Task Toolbox
+    this.handleUpdateCurrentItem(null);
+
+    let isOpen = this.state.addTaskFormIsAvailable ? false : true;
+
+    // console.log(' handleAddTaskToggle ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
+    // console.log(isOpen);
+
+    this.setState({
+      addTaskFormIsAvailable: isOpen
+    });
+  };
 
   //================================
 
@@ -338,7 +358,12 @@ class App extends Component {
                 </Droppable>
               </DragDropContext>
 
-              <AddTaskForm addTask={this.handleAddTask} holdTasks={this.handleHoldTasks} />
+              <AddTaskForm
+                addTask={this.handleAddTask}
+                holdTasks={this.handleHoldTasks}
+                addTaskToggle={this.handleAddTaskToggle}
+                isAvailable={this.state.addTaskFormIsAvailable}
+              />
             </Gutter>
           </MiddleColumn>
 

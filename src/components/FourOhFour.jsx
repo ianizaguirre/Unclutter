@@ -27,7 +27,10 @@ const FourOhFour = () => (
     <Header />
     <Wrapper>
       <Title> 404 Page </Title>
-      <SubHeading role="img"> 👻 </SubHeading>
+      <SubHeading role="img" aria-labelledby="ghost">
+        {' '}
+        👻{' '}
+      </SubHeading>
     </Wrapper>
   </Fragment>
 );

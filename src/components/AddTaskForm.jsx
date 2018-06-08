@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const FormWrapper = styled.div`
+const Wrapper = styled.div`
   border-color: #e1e1e1;
   border-top-style: solid;
   border-width: 1px;
@@ -29,6 +29,7 @@ const Input = styled.input`
     font-size: 16px;
   }
 `;
+
 const ButtonWrap = styled.div`
   margin-top: 4px;
 `;
@@ -69,8 +70,8 @@ const Button = styled.button`
 // >>>>>>>>>>>>>>>>>>>>>>
 const MenuIconWrap = styled.div`
   cursor: pointer;
-    display: ${props => (props.isOpen ? 'none' : 'inline-block')};
-  /* display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')}; */
+  margin-top: 1rem;
+  display: ${props => (props.isOpen ? 'none' : 'inline-block')};
 `;
 const ToggleWrap = styled.div`
   position: relative;
@@ -78,7 +79,7 @@ const ToggleWrap = styled.div`
   width: 100%;
   cursor: pointer;
   color: #6b9945;
-  opacity: 0.8;
+  opacity: 0.6;
   transition: opacity.2s ease-in;
 
   display: ${props => (props.isOpen ? 'none' : 'inline-block')};
@@ -98,7 +99,7 @@ const ToggleText = styled.span`
 `;
 
 const ToggleIcon = styled.span`
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 500;
   padding-right: 5px;
   text-decoration: none;
@@ -108,20 +109,12 @@ const MenuContents = styled.div`
   width: 100%;
   color: #7d8485;
   background-color: #ffffff;
-  /* line-height: 20px; */
-  /* border: 1px solid #e1e1e1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  border-radius: 4px; */
-  cursor: pointer;
 
   display: ${props => (props.isOpen ? 'none' : 'inline-block')};
 `;
 // >>>>>>>>>>>>>>>>>>>>>
 
 class AddTaskForm extends Component {
-  state = {
-    openMenu: ''
-  };
   contentRef = React.createRef();
 
   addToDoEntry = event => {
@@ -143,43 +136,28 @@ class AddTaskForm extends Component {
     event.currentTarget.reset();
   };
 
-  handleToggleMenu = event => {
-    event.preventDefault();
-
-    let isOpen = this.state.openMenu ? false : true;
-
-    // console.log('this.props.mouseOnTask ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
-    // console.log(isOpen);
-
-    this.setState({
-      openMenu: isOpen
-    });
-  };
-
   render() {
     return (
-      <Fragment>
-        <MenuIconWrap isOpen={this.state.openMenu} onClick={this.handleToggleMenu}>
+      <Wrapper>
+        <MenuIconWrap isOpen={this.props.isAvailable} onClick={this.props.addTaskToggle}>
           <ToggleWrap>
             <ToggleIcon>+</ToggleIcon>
             <ToggleText> Add Task</ToggleText>
           </ToggleWrap>
         </MenuIconWrap>
 
-        <MenuContents isOpen={!this.state.openMenu}>
-          <FormWrapper>
-            <form autoComplete="off" onSubmit={this.addToDoEntry}>
-              <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
-              <ButtonWrap>
-                <Button type="submit"> Add Task → </Button>
-                <Button cancel onClick={this.handleToggleMenu}>
-                  Cancel
-                </Button>
-              </ButtonWrap>
-            </form>
-          </FormWrapper>
+        <MenuContents isOpen={!this.props.isAvailable}>
+          <form autoComplete="off" onSubmit={this.addToDoEntry}>
+            <Input name="content" type="text" innerRef={this.contentRef} placeholder="Enter a Task" required />
+            <ButtonWrap>
+              <Button type="submit"> Add Task → </Button>
+              <Button cancel onClick={this.props.addTaskToggle}>
+                Cancel
+              </Button>
+            </ButtonWrap>
+          </form>
         </MenuContents>
-      </Fragment>
+      </Wrapper>
     );
   }
 }

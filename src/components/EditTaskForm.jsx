@@ -269,7 +269,7 @@ class EditTaskForm extends Component {
     event.preventDefault();
 
     this.props.updateCurrentItem(this.props.indexman);
-    console.log('Yooo is this the index inside of handleFocus()');
+    // console.log('Yooo is this the index inside of handleFocus()');
     // console.log(this.props.indexman);
 
     //  ------------------
