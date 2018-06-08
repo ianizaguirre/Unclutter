@@ -162,7 +162,7 @@ const Button = styled.button`
   margin-right: 0.5em;
   padding: 0.375rem 0.75rem;
 
-  font-weight: ${props => (props.cancel ? '500' : '500')};
+  font-weight: 500;
   font-family: 'Open Sans', sans-serif;
 
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
@@ -269,7 +269,7 @@ class EditTaskForm extends Component {
     event.preventDefault();
 
     this.props.updateCurrentItem(this.props.indexman);
-    // console.log('Yooo is this the index inside of handleFocus()');
+    console.log('Yooo is this the index inside of handleFocus()');
     // console.log(this.props.indexman);
 
     //  ------------------

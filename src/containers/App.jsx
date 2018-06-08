@@ -85,6 +85,7 @@ const MiddleColumn = Column.extend`
     width: 100%;
   } */
 `;
+
 const Gutter = styled.div`
   width: 90%;
   margin: 0 auto;
