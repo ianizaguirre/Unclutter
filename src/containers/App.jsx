@@ -28,12 +28,12 @@ const grid = 12;
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-  padding: grid * 2,
+  // padding: grid * 2,
   margin: `0 0 2px 0`,
   // margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'white',
+  background: isDragging ? 'lightgreen' : '#fff',
   // border: '3px solid red',
   border: '#e1e1e1',
   borderTopStyle: 'solid',
@@ -57,6 +57,7 @@ const getListStyle = isDraggingOver => ({
 
 const Wrapper = styled.div`
   background-color: #fafafa;
+  overflow: hidden;
 `;
 
 const FlexContainer = styled.div`
@@ -243,7 +244,8 @@ class App extends Component {
     // console.log('THIS IS THE STATE OF =====> isOpenStatus');
     // console.log(isOpenStatus);
 
-    let isOpen = isOpenStatus ? index : null;
+    // false or Null ?
+    let isOpen = isOpenStatus ? index : false;
     // console.log('==============isOpen==============>>>>>>🏆🏆🏆🏆🏆🏆');
     // console.log(isOpen);
 

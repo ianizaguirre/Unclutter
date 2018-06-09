@@ -25,6 +25,10 @@ const Input = styled.input`
 
   margin-top: 1rem;
 
+  &:focus {
+    outline: none;
+  }
+
   @media (max-width: 750px) {
     font-size: 16px;
   }

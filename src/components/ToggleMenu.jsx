@@ -19,6 +19,7 @@ const MenuContents = styled.div`
   border-radius: 4px;
   cursor: pointer;
   position: absolute;
+  z-index: 1;
   /* top: 36%; */
   /* left: 63%; */
   /* margin-left: -17px; */
@@ -34,7 +35,8 @@ const MenuContents = styled.div`
     margin-top: auto;
     position: relative; */
     margin-top: ${props => (props.toolBoxOpen ? '-88px' : '-51px')};
-    margin-left: -17px;
+    margin-left: -27px;
+    /* margin-left: -17px; */
     /* top: 218px; */
     width: 85px;
   }
@@ -54,7 +56,7 @@ class ToggleMenu extends Component {
     event.preventDefault();
 
     let isOpen = this.props.openMenu ? false : true;
-    // console.log('THIS IS THE STATE OF =====> openMenu 🍎');
+    // let isOpen = true;
 
     this.props.toggleMenu(isOpen, this.props.indexman);
 

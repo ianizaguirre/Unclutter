@@ -5,26 +5,41 @@ import dragicon from '../drag-icon.png';
 import ToggleMenu from './ToggleMenu';
 
 const Form = styled.form`
-  /* background: red; */
+  /* background: blue;
+  opacity: 0.4; */
+  background: ${props => (props.taskBackgroundColorMenuOpen ? '#E9E8E8' : '#ffffff')};
+  padding-top: 24px;
+  padding-bottom: 24px;
   position: relative;
 
+  padding-left: 15px;
+
+  /* ======== Make Icon/Number Area on hover, Dragable- Hacky way :( */
   &:before {
+    /* content: ' 1';
+    background: blue;
+    opacity: 0.1; */
     content: ' ';
     position: absolute;
-    /* background: blue;
-    opacity: 0.1; */
     right: auto;
-    left: -10%;
-    top: ${props => (props.toolboxIsVisible ? '-28%' : '-51%')};
-    height: ${props => (props.toolboxIsVisible ? '113px' : '85px')};
-    width: 118%;
+    left: -8%;
+    top: ${props => (props.toolboxIsVisible ? '0' : '0')};
+    height: ${props => (props.toolboxIsVisible ? '120px' : '85px')};
+    width: 116%;
+    /* width: 118%; */
+    /* left: -10%; */
+    /* top: ${props => (props.toolboxIsVisible ? '-28%' : '-51%')};
+    height: ${props => (props.toolboxIsVisible ? '113px' : '85px')}; */
   }
 
   @media (max-width: 750px) {
+    padding-left: 0;
+
     &:before {
+      width: 120%;
       left: -10%;
-      top: ${props => (props.toolboxIsVisible ? '-18%' : '-23%')};
-      height: ${props => (props.toolboxIsVisible ? '155px' : '118px')};
+      top: ${props => (props.toolboxIsVisible ? '0' : '0')};
+      height: ${props => (props.toolboxIsVisible ? '164px' : '127px')};
     }
   }
 `;
@@ -109,42 +124,46 @@ const Column3 = Column1.extend`
   margin-top: 4px;
 `;
 
+// const Input = styled.input`
+//   position: relative;
+//   font-size: 14px;
+//   color: #535a5b;
+//   min-width: 100%;
+//   border: 1px solid #dbdbdb;
+//   border-radius: 3px;
+//   overflow: hidden;
+//   padding: 0.5rem 0.75rem;
+//   box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+//   font-weight: 400;
+//   font-family: 'Open Sans', sans-serif;
+
+//   @media (max-width: 750px) {
+//     font-size: 16px;
+//   }
+// `;
 const Input = styled.input`
   position: relative;
   font-size: 14px;
+  background: transparent;
   color: #535a5b;
   min-width: 100%;
-  border: 1px solid #dbdbdb;
   border-radius: 3px;
   overflow: hidden;
   padding: 0.5rem 0.75rem;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
+
+  border: ${props => (props.taskClicked ? '1px solid #dbdbdb' : 'none')};
+  box-shadow: ${props => (props.taskClicked ? '0 0 2px rgba(0, 0, 0, 0.08)' : 'none')};
+
+  &:focus {
+    outline: none;
+  }
 
   @media (max-width: 750px) {
     font-size: 16px;
   }
 `;
-// ================================================
-const DragIconImg = styled.img`
-  /* width: 2em; */
-  width: 15px;
-  position: absolute;
-  cursor: pointer;
-  margin-top: 13px;
-  margin-left: -19px;
-  opacity: 0.5;
-  /* transform: rotate(90deg); */
-  display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
-  /* display: 'inline-block'; */
-
-  /* ALWAYS Show Drag Icon when viewing from phone */
-  @media (max-width: 750px) {
-    display: none;
-  }
-`;
-
 // ================================================
 
 const Button = styled.button`
@@ -200,7 +219,7 @@ const ButtonDel = styled.button`
 
   &:hover {
     color: #333;
-    background-color: #e9e8e8;
+    background-color: #edeced;
     outline: 0;
     border-color: transparent;
   }
@@ -216,14 +235,31 @@ const TaskNumber = styled.div`
 
   position: absolute;
 
-  margin-left: -16px;
+  margin-left: -14px;
   margin-top: -8px;
 
   /* &:hover {
     color:
   } */
 `;
+const DragIconImg = styled.img`
+  /* width: 2em; */
+  width: 15px;
+  position: absolute;
+  /* cursor: pointer; */
+  margin-top: 13px;
+  /* margin-left: -16px; */
+  margin-left: -32px;
+  opacity: 0.5;
+  /* transform: rotate(90deg); */
+  display: ${props => (props.mouseOnTaskCheck ? 'inline-block' : 'none')};
+  /* display: 'inline-block'; */
 
+  /* ALWAYS Show Drag Icon when viewing from phone */
+  @media (max-width: 750px) {
+    display: none;
+  }
+`;
 // ================================================
 // console.log(event.currentTarget); // ==> returns => whole <input... tag
 // =======================
@@ -347,6 +383,7 @@ class EditTaskForm extends Component {
         onMouseEnter={this.handleHoverOn}
         onMouseLeave={this.handleHoverOff}
         toolboxIsVisible={this.props.isAvailable}
+        taskBackgroundColorMenuOpen={this.props.openMenu}
       >
         <ListItemsWrapper>
           <TaskNumber>{this.props.indexman + 1}</TaskNumber>
@@ -360,6 +397,7 @@ class EditTaskForm extends Component {
                   onChange={this.handleChange}
                   onFocus={this.handleFocus}
                   value={this.props.value}
+                  taskClicked={this.props.isAvailable}
                 />
               </Column1>
               <Column3>

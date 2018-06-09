@@ -58,7 +58,7 @@
 
 ## Application Map
 
-![Unclutter-App-Map](/public/images/Unclutter-App-Map.png)
+![Unclutter-App-Map](/public/images/Unclutter-App-Map.png?raw=true)
 
 &nbsp;
 

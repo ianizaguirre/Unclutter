@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
 import Header from './Header';
+// import { Link } from 'react-router-dom';
 // import '../css/Landing.css';
 
 const Wrapper = styled.div`
@@ -70,6 +71,10 @@ const Input = styled.input`
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
 
+  &:focus {
+    outline: none;
+  }
+
   @media (max-width: 750px) {
     font-size: 16px;
   }
@@ -91,6 +96,57 @@ const Button = styled.button`
 
   &:hover {
     opacity: 0.8;
+  }
+`;
+// =================================================================
+
+const AuthorWrap = styled.div`
+  font-size: 16px;
+  line-height: 1.4;
+
+  /* padding-top: 3.5rem; */
+  margin-top: 3.5rem;
+
+  border-color: #e1e1e1;
+  border-top-style: solid;
+  border-width: 1px;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
+`;
+const Title = styled.h3`
+  font-size: 21px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Open Sans', sans-serif;
+
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  @media (max-width: 750px) {
+    /* text-align: center; */
+    font-size: 25px;
+  }
+`;
+
+const OutsideLink = styled.a`
+  color: #4ccff9;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 750px) {
+    /* text-align: center; */
+    font-size: 25px;
   }
 `;
 
@@ -128,6 +184,10 @@ class Landing extends Component {
                 />
                 <Button type="submit"> Visit Application → </Button>
               </Form>
+              <AuthorWrap>
+                <Title>Project Details</Title>
+                <OutsideLink href="https://github.com/ianizaguirre/Unclutter">Visit GitHub Repository →</OutsideLink>
+              </AuthorWrap>
             </Gutter>
           </MiddleColumn>
           <Column />
