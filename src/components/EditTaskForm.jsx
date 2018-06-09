@@ -160,6 +160,10 @@ const Input = styled.input`
     outline: none;
   }
 
+  &[type='text'][disabled] {
+    color: #535a5b;
+  }
+
   @media (max-width: 750px) {
     font-size: 16px;
   }

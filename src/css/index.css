@@ -150,6 +150,10 @@ body {
   overflow-x:hidden
 } */
 
+input[type='text'][disabled] {
+  color: #535a5b;
+}
+
 body {
   width: 100%;
   margin: 0 auto;
