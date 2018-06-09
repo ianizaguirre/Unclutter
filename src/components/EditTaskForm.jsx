@@ -160,7 +160,15 @@ const Input = styled.input`
     outline: none;
   }
 
-  &[type='text'][disabled] {
+  & [disabled] {
+    color: #535a5b;
+  }
+
+  [disabled] {
+    color: #535a5b;
+  }
+
+  [disabled] & {
     color: #535a5b;
   }
 
