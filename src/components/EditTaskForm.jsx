@@ -383,7 +383,7 @@ class EditTaskForm extends Component {
     event.preventDefault();
     // this.props.updateCurrentItem(null);
     // console.log('1', event.currentTarget);
-    console.log('Clicked handleFormClick ===========xoxoxo========>');
+    // console.log('Clicked handleFormClick ===========xoxoxo========>');
   };
 
   render() {

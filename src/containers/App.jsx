@@ -158,9 +158,9 @@ class App extends Component {
 
   handleDragEnd = result => {
     // =======================
-    console.log('DRAG END');
     // If Task Toolbox is Open then Close it on Drag End
     this.handleUpdateCurrentItem(null);
+    // console.log('DRAG END');
     // =======================
     // dropped outside the list
     if (!result.destination) {
