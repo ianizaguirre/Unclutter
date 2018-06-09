@@ -4,9 +4,19 @@ import styled from 'styled-components';
 import ellipsis from '../ellipsis-icon.png';
 
 //==============================
-const MenuIconWrap = styled.div`
+const MenuIconWrap = styled.button`
   cursor: pointer;
   display: ${props => (props.buttonIsVisible ? 'inline-block' : 'none')};
+
+  /* Remove Browser Default Button Styles */
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const MenuContents = styled.div`
@@ -56,12 +66,14 @@ class ToggleMenu extends Component {
     event.preventDefault();
 
     let isOpen = this.props.openMenu ? false : true;
-    // let isOpen = true;
 
     this.props.toggleMenu(isOpen, this.props.indexman);
 
     // console.log('this.props.mouseOnTask ------- 💎💎💎💎💎💎💎💎💎💎💎💎');
     // console.log(this.props.indexman);
+
+    // If open then Close task ToolBox
+    this.props.updateCurrentItem(null);
   };
 
   render() {

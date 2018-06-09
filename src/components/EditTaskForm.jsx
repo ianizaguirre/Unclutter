@@ -324,6 +324,9 @@ class EditTaskForm extends Component {
     // console.log(taskBeforeEdits);
 
     this.props.holdRevertedTask(taskBeforeEdits);
+
+    // Close Ellipse Menu if its Open
+    this.props.toggleMenu(false, this.props.indexman);
   };
 
   handleClickSave = event => {
@@ -376,6 +379,13 @@ class EditTaskForm extends Component {
     // console.log(mouseOnTaskCheck);
   };
 
+  handleFormClick = event => {
+    event.preventDefault();
+    // this.props.updateCurrentItem(null);
+    // console.log('1', event.currentTarget);
+    console.log('Clicked handleFormClick ===========xoxoxo========>');
+  };
+
   render() {
     return (
       <Form
@@ -384,6 +394,7 @@ class EditTaskForm extends Component {
         onMouseLeave={this.handleHoverOff}
         toolboxIsVisible={this.props.isAvailable}
         taskBackgroundColorMenuOpen={this.props.openMenu}
+        onClick={this.handleFormClick}
       >
         <ListItemsWrapper>
           <TaskNumber>{this.props.indexman + 1}</TaskNumber>
@@ -392,6 +403,8 @@ class EditTaskForm extends Component {
             <FlexContainerColumn>
               <Column1 primary>
                 <Input
+                  disabled={!this.props.isMouseOnTask}
+                  onClick={this.handleFormClick}
                   type="text"
                   name="content"
                   onChange={this.handleChange}
@@ -422,6 +435,7 @@ class EditTaskForm extends Component {
                     toggleMenu={this.props.toggleMenu}
                     indexman={this.props.indexman}
                     currentItemsToggledMenu={this.props.currentItemsToggledMenu}
+                    updateCurrentItem={this.props.updateCurrentItem}
                   >
                     <ButtonDel buttonIsVisible={true} onClick={this.handleClickDelete}>
                       Delete task
