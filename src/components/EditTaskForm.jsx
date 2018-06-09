@@ -144,8 +144,9 @@ const Input = styled.input`
   position: relative;
   font-size: 14px;
   background: transparent;
-  color: #535a5b;
+  color: ${props => (props.disabled ? '#535a5b' : '#535a5b')};
   min-width: 100%;
+  opacity: 1;
   border-radius: 3px;
   overflow: hidden;
   padding: 0.5rem 0.75rem;
@@ -159,8 +160,13 @@ const Input = styled.input`
     outline: none;
   }
 
+  &:read-only,
   &:disabled {
     color: #535a5b;
+    /* Override iOS / Android font color change */
+    -webkit-text-fill-color: #535a5b;
+    opacity: 1;
+    -webkit-opacity: 1; /* Override iOS opacity change affecting text & background color */
   }
 
   /* & [disabled] {
