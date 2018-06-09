@@ -162,6 +162,10 @@ const Input = styled.input`
     outline: none;
   }
 
+  &:disabled {
+    color: #535a5b;
+  }
+
   /* & [disabled] {
     color: #535a5b;
   }
@@ -425,7 +429,6 @@ class EditTaskForm extends Component {
                   onFocus={this.handleFocus}
                   value={this.props.value}
                   taskClicked={this.props.isAvailable}
-                  className="color-disable"
                 />
               </Column1>
               <Column3>
