@@ -101,10 +101,9 @@ const Button = styled.button`
 // =================================================================
 
 const AuthorWrap = styled.div`
-  font-size: 16px;
+  /* font-size: 16px; */
   line-height: 1.4;
 
-  /* padding-top: 3.5rem; */
   margin-top: 3.5rem;
 
   border-color: #e1e1e1;
@@ -112,9 +111,10 @@ const AuthorWrap = styled.div`
   border-width: 1px;
 
   @media (max-width: 750px) {
-    font-size: 16px;
+    /* font-size: 16px; */
   }
 `;
+
 const Title = styled.h3`
   font-size: 21px;
   margin-top: 2rem;
@@ -146,7 +146,7 @@ const OutsideLink = styled.a`
 
   @media (max-width: 750px) {
     /* text-align: center; */
-    font-size: 25px;
+    font-size: 16px;
   }
 `;
 
