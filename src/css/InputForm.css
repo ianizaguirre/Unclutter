@@ -1,0 +1,15 @@
+input[type='text'][disabled] {
+  color: #535a5b;
+}
+
+input[disabled] {
+  color: #535a5b;
+}
+
+[disabled] {
+  color: #535a5b;
+}
+
+.color-disable[disabled] {
+  color: #535a5b;
+}

@@ -150,9 +150,6 @@ body {
   overflow-x:hidden
 } */
 
-input[type='text'][disabled] {
-  color: #535a5b;
-}
 
 body {
   width: 100%;

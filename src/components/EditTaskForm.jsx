@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import '../css/InputForm.css';
+
 import dragicon from '../drag-icon.png';
 import ToggleMenu from './ToggleMenu';
 
@@ -160,7 +162,7 @@ const Input = styled.input`
     outline: none;
   }
 
-  & [disabled] {
+  /* & [disabled] {
     color: #535a5b;
   }
 
@@ -170,7 +172,7 @@ const Input = styled.input`
 
   [disabled] & {
     color: #535a5b;
-  }
+  } */
 
   @media (max-width: 750px) {
     font-size: 16px;
@@ -423,6 +425,7 @@ class EditTaskForm extends Component {
                   onFocus={this.handleFocus}
                   value={this.props.value}
                   taskClicked={this.props.isAvailable}
+                  className="color-disable"
                 />
               </Column1>
               <Column3>
