@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import '../css/InputForm.css';
-
 import dragicon from '../drag-icon.png';
 import ToggleMenu from './ToggleMenu';
 
@@ -117,7 +115,6 @@ const DateWrap = styled.div`
 `;
 
 const Column2Ellipise = styled.div`
-  /* flex: auto; */
   padding-left: 10px;
 `;
 
